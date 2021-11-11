@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:22:04 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/10 13:29:06 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/11 16:47:15 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
-		return 1;
+		return (1);
 	else
-		return 0;	
+		return (0);
 }

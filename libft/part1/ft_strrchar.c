@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strrchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 13:25:07 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/11 16:44:57 by seongwch         ###   ########.fr       */
+/*   Created: 2021/11/11 15:06:36 by seongwch          #+#    #+#             */
+/*   Updated: 2021/11/11 16:47:47 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+char	*ft_strrchar(const char *str, int c)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
+	int	i;
+
+	i = ft_strlen(str);
+	while (i >= 0)
+	{
+		if (str[i] == c)
+			return (&str[i]);
+		i--;
+	}
+	return (NULL);
 }

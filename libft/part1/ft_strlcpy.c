@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 13:25:07 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/11 16:44:57 by seongwch         ###   ########.fr       */
+/*   Created: 2021/11/11 13:55:29 by seongwch          #+#    #+#             */
+/*   Updated: 2021/11/11 16:41:21 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
+	int	i;
+	int	len;
+
+	i = 0;
+	len = 0;
+	if (src == 0)
 		return (0);
+	while (src[len] != '\0')
+		len++;
+	if (size != 0)
+	{
+		while (i < size)
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (len);
 }

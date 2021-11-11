@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:39:56 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/10 13:41:59 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/11 16:38:17 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	ft_bzero(void *ptr, size_t num)
 {
@@ -23,4 +23,3 @@ void	ft_bzero(void *ptr, size_t num)
 		i++;
 	}
 }
-
