@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:31:05 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/11 16:40:46 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/13 14:33:08 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	*ft_memset(void *ptr, int value, size_t num)
 {
-	int	i;
-	unsigned char start;
+	size_t				i;
+	unsigned char	*start;
 
 	i = 0;
 	start = (unsigned char *)ptr;
 	while (i < num)
 	{
-		start[i] = value;
+		start[i] = (unsigned char)value;
 		i++;
 	}
-	return ptr;
+	return (ptr);
 }

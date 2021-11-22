@@ -6,15 +6,15 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:42:23 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/11 16:46:22 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/13 14:30:36 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, void *src, size_t num)
+void	*ft_memcpy(void *dest, const void *src, size_t num)
 {
-	int				i;
+	size_t				i;
 	unsigned char	*dest_pt;
 	unsigned char	*src_pt;
 

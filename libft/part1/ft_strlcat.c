@@ -6,16 +6,16 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 14:31:03 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/11 14:55:11 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/12 16:58:52 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
-	int	i;
-	int	dest_len;
-	int	src_len;
+	size_t	i;
+	unsigned char	dest_len;
+	unsigned char	src_len;
 
 	i = 0;
 	dest_len = ft_strlen(dest);
@@ -24,7 +24,7 @@ size_t	ft_strlcat(char *dest, char *src, size_t size)
 	{
 		while (i < src_len && src[i] != '\0')
 		{
-			dest[dest_len + i] = src_len[i]; 
+			dest[dest_len + i] = src[i];
 			i++;
 		}
 		dest[dest_len + i] = '\0';
