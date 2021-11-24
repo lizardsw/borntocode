@@ -6,13 +6,13 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:39:16 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/11 16:48:25 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/24 19:31:42 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-int	ft_isaplha(char c)
+int	ft_isaplha(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (1);

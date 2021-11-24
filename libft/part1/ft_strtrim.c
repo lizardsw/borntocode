@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 21:21:26 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/22 15:41:11 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:18:55 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = start;
 	while (s1[end] != '\0' && ft_strchar(set, s1[end]) == NULL)
 		end++;
-	return (ft_substr(s1, start, end - start + 1));
+	return (ft_substr(s1, start, end - start));
 }

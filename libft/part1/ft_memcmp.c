@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:42:51 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/12 16:30:18 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:59:00 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
 	unsigned char	*ptr1;
 	unsigned char	*ptr2;
-	size_t				i;
+	size_t			i;
 
 	i = 0;
 	ptr1 = (unsigned char *) str1;

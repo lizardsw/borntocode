@@ -6,14 +6,14 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 14:31:03 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/12 16:58:52 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:56:18 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	dest_len;
 	unsigned char	src_len;
 

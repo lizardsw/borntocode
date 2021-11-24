@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 13:31:05 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/24 20:00:41 by seongwch         ###   ########.fr       */
+/*   Created: 2021/11/23 15:05:50 by seongwch          #+#    #+#             */
+/*   Updated: 2021/11/24 16:26:58 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *ptr, int value, size_t num)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t			i;
-	char	*start;
+	t_list	*ptr;
+	t_list	*nextnode;
 
-	i = 0;
-	start = (char *)ptr;
-	while (i < num)
+	ptr = *lst;
+	while (ptr != NULL)
 	{
-		start[i] = (unsigned char)value;
-		i++;
+		nextnode = ptr -> next;
+		ft_lstdelone(ptr, del);
+		ptr = nextnode;
 	}
-	return (ptr);
+	*lst = NULL;
 }

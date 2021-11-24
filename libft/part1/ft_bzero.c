@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:39:56 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/12 16:55:57 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:58:27 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_bzero(void *ptr, size_t num)
 {
-	size_t	i;
-	unsigned char *tmp;
+	size_t			i;
+	unsigned char	*tmp;
 
 	i = 0;
 	tmp = (unsigned char *)ptr;

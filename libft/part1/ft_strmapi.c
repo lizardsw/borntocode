@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 14:17:58 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/22 15:49:57 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:55:25 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	size_t	len;
-	char	*new;
+	unsigned int	i;
+	size_t			len;
+	char			*new;
 
 	len = ft_strlen(s);
 	i = 0;

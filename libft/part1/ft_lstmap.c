@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 13:31:05 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/24 20:00:41 by seongwch         ###   ########.fr       */
+/*   Created: 2021/11/23 15:34:14 by seongwch          #+#    #+#             */
+/*   Updated: 2021/11/24 16:41:44 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *ptr, int value, size_t num)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *))
 {
-	size_t			i;
-	char	*start;
+	t_list	*newlst;
+	t_list	*newnode;
+	t_list	*ptr;
 
-	i = 0;
-	start = (char *)ptr;
-	while (i < num)
+	ft_lstiter(lst, f);
+	ptr = lst;
+	newnode = NULL;
+	while (ptr -> next != NULL)
 	{
-		start[i] = (unsigned char)value;
-		i++;
+		newnode = ft_lstnew(ptr -> content);
+		if (newnode == NULL)
+		{
+			ft_lstclear(&newlst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&newlst, newnode);
+		ptr = ptr -> next;
 	}
-	return (ptr);
 }

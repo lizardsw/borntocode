@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 12:04:26 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/22 15:38:38 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:35:56 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	check_size(char const *s, char c)
 		else
 			i++;
 	}
-	return (size);
+	return (size + 1);
 }
 
 char	*make_str(char const *str, char c)
@@ -49,6 +49,8 @@ char	*make_str(char const *str, char c)
 	}
 	len = i;
 	new = (char *)malloc(sizeof(char) * (len + 1));
+	if (new == NULL)
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
@@ -77,7 +79,7 @@ char	**ft_split(char const *s, char c)
 		if (s[i] != c)
 		{
 			new[j++] = make_str(&s[i], c);
-			while (s[i] != c)
+			while (s[i] == c)
 				i++;
 		}
 		else

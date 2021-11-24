@@ -41,6 +41,17 @@ PART2 = ft_itoa\
 	ft_strtrim\
 	ft_substr
 
+BONUS = ft_lstadd_back\
+	ft_lstclear\
+	ft_lstiter\
+	ft_lstmap\
+	ft_lstsize\
+	ft_lstadd_front\
+	ft_lstdelone\
+	ft_lstlast\
+	ft_lstnew
+
+
 all : $(TARGET)
 
 SRCS = $(addprefix ./,$(addsuffix .c, $(PART1)))
@@ -49,12 +60,17 @@ OBJECTS = $(addprefix ./,$(addsuffix .o, $(PART1)))
 SRCS1 = $(addprefix ./,$(addsuffix .c, $(PART2)))
 OBJECTS1 = $(addprefix ./,$(addsuffix .o, $(PART2)))
 
+SRCS2 = $(addprefix ./,$(addsuffix .c, $(BONUS)))
+OBJECTS2 = $(addprefix ./,$(addsuffix .o, $(BONUS)))
+
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(TARGET) : $(OBJECTS) $(OBJECTS1)
+$(TARGET) : $(OBJECTS) $(OBJECTS1) $(OBJECTS2)
 	$(AR) $@ $^
 
+fclean :
+	rm *.o
 
 clean :
 	rm *.o libft.a

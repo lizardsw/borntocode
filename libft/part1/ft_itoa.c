@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:02:12 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/22 15:49:08 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:43:24 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ size_t	make_size(int n)
 	size_t	i;
 
 	i = 0;
+	if (n < 0)
+		i++;
 	while (n != 0)
 	{
 		i++;
 		n = n / 10;
 	}
-	if (n < 0)
-		i++;
 	return (i);
 }
 
