@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:02:12 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/22 17:43:24 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/27 19:30:40 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	make_size(int n)
 	size_t	i;
 
 	i = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 		i++;
 	while (n != 0)
@@ -32,9 +34,11 @@ void	fill_char(char *str, int n, size_t size)
 	size_t	i;
 	int		temp;
 
-	i = size;
+	i = size - 1;
 	if (n < 0)
 		str[0] = '-';
+	if (n == 0)
+		str[0] = '0';
 	while (n != 0)
 	{
 		temp = n % 10;
@@ -44,6 +48,7 @@ void	fill_char(char *str, int n, size_t size)
 		n = n / 10;
 		i--;
 	}
+	str[size] = '\0';
 }
 
 char	*ft_itoa(int n)
