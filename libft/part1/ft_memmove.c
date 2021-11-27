@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:50:31 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/24 20:47:32 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/27 15:11:48 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*ft_memmove(void *dest, const void *src, size_t num)
 	if (dest > src)
 	{
 		while (i < num)
-			dest_pt[i++] = src_pt[j++];
+			dest_pt[num - 1 - i++] = src_pt[num - 1 - j++];
 	}
 	else
 	{

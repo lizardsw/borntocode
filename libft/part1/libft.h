@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 20:48:22 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/24 21:02:10 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:27:24 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int		ft_atoi(const char *str);
 void	ft_bzero(void *ptr, size_t num);
 int		ft_isalnum(int c);
-int		ft_isaplha(int c);
+int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
@@ -28,13 +28,13 @@ int		ft_memcmp(const void *str1, const void *str2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t num);
 void	*ft_memmove(void *dest, const void *src, size_t num);
 void	*ft_memset(void *ptr, int value, size_t num);
-char	*ft_strchar(const char *str, int c);
+char	*ft_strchr(const char *str, int c);
 size_t	ft_strlcat(char *dest, char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t num);
-char	*strnstr(const char *dest, const char *src, size_t len);
-char	*ft_strrchar(char *str, int c);
+char	*ft_strnstr(const char *dest, const char *src, size_t len);
+char	*ft_strrchr(char *str, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	*ft_strdup(const char *str);

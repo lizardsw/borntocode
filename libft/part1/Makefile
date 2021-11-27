@@ -1,14 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/24 21:31:47 by seongwch          #+#    #+#              #
+#    Updated: 2021/11/27 15:46:23 by seongwch         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -Wextra -Werror
 AR = ar rs
-TARGET = libft.a
+RM = rm -f
+NAME = libft.a
 
 
 PART1 = ft_atoi\
 	ft_isascii\
 	ft_memcmp\
-	ft_strchar\
+	ft_strchr\
 	ft_strncmp\
 	ft_toupper\
 	ft_bzero\
@@ -20,7 +32,7 @@ PART1 = ft_atoi\
 	ft_isprint\
 	ft_memmove\
 	ft_strlcpy\
-	ft_strrchar\
+	ft_strrchr\
 	ft_isalpha\
 	ft_memchr\
 	ft_memset\
@@ -44,7 +56,6 @@ PART2 = ft_itoa\
 BONUS = ft_lstadd_back\
 	ft_lstclear\
 	ft_lstiter\
-	ft_lstmap\
 	ft_lstsize\
 	ft_lstadd_front\
 	ft_lstdelone\
@@ -52,7 +63,7 @@ BONUS = ft_lstadd_back\
 	ft_lstnew
 
 
-all : $(TARGET)
+all : $(NAME)
 
 SRCS = $(addprefix ./,$(addsuffix .c, $(PART1)))
 OBJECTS = $(addprefix ./,$(addsuffix .o, $(PART1)))
@@ -66,12 +77,15 @@ OBJECTS2 = $(addprefix ./,$(addsuffix .o, $(BONUS)))
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(TARGET) : $(OBJECTS) $(OBJECTS1) $(OBJECTS2)
+$(NAME) : $(OBJECTS) $(OBJECTS1) $(OBJECTS2)
 	$(AR) $@ $^
 
-fclean :
-	rm *.o
-
 clean :
-	rm *.o libft.a
+	$(RM) *.o
+
+fclean :
+	$(RM) $(NAME)
+
+re	: fclean all
+
 
