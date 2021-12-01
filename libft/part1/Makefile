@@ -6,7 +6,7 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 21:31:47 by seongwch          #+#    #+#              #
-#    Updated: 2021/11/27 15:46:23 by seongwch         ###   ########.fr        #
+#    Updated: 2021/12/01 15:02:54 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,8 @@ BONUS = ft_lstadd_back\
 	ft_lstadd_front\
 	ft_lstdelone\
 	ft_lstlast\
-	ft_lstnew
+	ft_lstnew\
+	ft_lstmap
 
 
 all : $(NAME)

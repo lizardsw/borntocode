@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:34:14 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/24 16:41:44 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/12/01 18:27:32 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *))
 	t_list	*newnode;
 	t_list	*ptr;
 
-	ft_lstiter(lst, f);
 	ptr = lst;
-	newnode = NULL;
-	while (ptr -> next != NULL)
+	if (lst == NULL)
+		return (NULL);
+	newlst = NULL;
+	while (ptr != NULL)
 	{
-		newnode = ft_lstnew(ptr -> content);
+		newnode = ft_lstnew(f(ptr -> content));
 		if (newnode == NULL)
 		{
 			ft_lstclear(&newlst, del);
-			return (NULL);
+			return (newlst);
 		}
 		ft_lstadd_back(&newlst, newnode);
 		ptr = ptr -> next;
 	}
+	return (newlst);
 }
