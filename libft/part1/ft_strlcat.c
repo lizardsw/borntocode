@@ -6,12 +6,12 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 14:31:03 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/27 15:24:32 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/12/05 21:20:26 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t			i;
 	unsigned char	dest_len;

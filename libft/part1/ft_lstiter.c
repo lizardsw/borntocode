@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:13:30 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/24 16:36:41 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/12/05 19:41:46 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	t_list	*ptr;
 
 	ptr = lst;
-	while (ptr -> next != NULL)
+	if (lst == NULL || f == NULL)
+		return ;
+	while (ptr != NULL)
 	{
 		f(ptr -> content);
 		ptr = ptr ->next;

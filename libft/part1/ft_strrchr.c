@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:06:36 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/27 15:43:35 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/12/06 19:18:09 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 char	*ft_strrchr(char *str, int c)
 {
-	int	i;
+	unsigned char	ch;
+	int				i;
 
+	ch = (unsigned char)c;
 	i = ft_strlen(str);
 	while (i >= 0)
 	{
-		if (str[i] == c)
+		if (str[i] == ch)
 			return (&str[i]);
 		i--;
 	}

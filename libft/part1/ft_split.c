@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 12:04:26 by seongwch          #+#    #+#             */
-/*   Updated: 2021/12/01 14:58:23 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:37:40 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ char	**ft_split(char const *s, char c)
 	size_t	size;
 	char	**new;
 
+	if (s == NULL)
+		return (NULL);
 	size = check_size(s, c);
 	new = (char **)malloc(sizeof(char *) * (size + 1));
 	if (new == NULL)

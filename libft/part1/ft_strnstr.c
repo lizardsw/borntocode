@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:51:58 by seongwch          #+#    #+#             */
-/*   Updated: 2021/11/27 16:31:32 by seongwch         ###   ########.fr       */
+/*   Updated: 2021/12/05 21:14:01 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ char	*ft_strnstr(const char *dest, const char *src, size_t len)
 		if (dest[i] == src[j])
 		{
 			while (dest[i + j] == src[j] && i + j < len)
+			{
 				j++;
-			if (src[j] == '\0')
-				return ((char *)&dest[i]);
+				if (src[j] == '\0')
+					return ((char *)&dest[i]);
+			}
 		}
 		i++;
 	}
