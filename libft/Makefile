@@ -6,13 +6,14 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 21:31:47 by seongwch          #+#    #+#              #
-#    Updated: 2021/12/01 15:02:54 by seongwch         ###   ########.fr        #
+#    Updated: 2021/12/09 20:39:42 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rs
+CFLAGS = -Wall -Wextra -Werror -c
+AR = ar
+ARFLAGS = rs
 RM = rm -f
 NAME = libft.a
 
@@ -66,27 +67,33 @@ BONUS = ft_lstadd_back\
 
 all : $(NAME)
 
-SRCS = $(addprefix ./,$(addsuffix .c, $(PART1)))
-OBJECTS = $(addprefix ./,$(addsuffix .o, $(PART1)))
+PART1_SRCS = $(addsuffix .c, $(PART1))
+PART1_OBJECTS = $(addsuffix .o, $(PART1))
 
-SRCS1 = $(addprefix ./,$(addsuffix .c, $(PART2)))
-OBJECTS1 = $(addprefix ./,$(addsuffix .o, $(PART2)))
+PART2_SRCS = $(addsuffix .c, $(PART2))
+PART2_OBJECTS = $(addsuffix .o, $(PART2))
 
-SRCS2 = $(addprefix ./,$(addsuffix .c, $(BONUS)))
-OBJECTS2 = $(addprefix ./,$(addsuffix .o, $(BONUS)))
+BONUS_SRCS = $(addsuffix .c, $(BONUS))
+BONUS_OBJECTS = $(addsuffix .o, $(BONUS))
+
+OBJECTS1 = $(PART1_OBJECTS) $(PART2_OBJECTS)
+OBJECTS2 = $(PART1_OBJECTS) $(PART2_OBJECTS) $(BONUS_OBJECTS)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
 
-$(NAME) : $(OBJECTS) $(OBJECTS1) $(OBJECTS2)
-	$(AR) $@ $^
+$(NAME) : $(OBJECTS1)
+	$(AR) $(ARFLAGS) $@ $^
 
 clean :
-	$(RM) *.o
+	$(RM) $(OBJECTS) $(OBJECTS1) $(OBJECTS2)
 
 fclean :
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(OBJECTS) $(OBJECTS1) $(OBJECTS2)
 
 re	: fclean all
 
+bonus	: $(OBJECTS2)
+	$(AR) $(ARFLAGS) $(NAME) $^
 
+.PHONY : 
