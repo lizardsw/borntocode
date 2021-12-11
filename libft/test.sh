@@ -22,6 +22,9 @@ read $a
 git clone https://github.com/alelievr/libft-unit-test.git
 cd libft-unit-test/
 sed -i "" 's/LIBFTDIR	=	..\/libft/LIBFTDIR	=	..\//' Makefile
+cd ..
+make bonus
+cd libft-unit-test/
 make f
 cd ..
 echo -e "\033[32;1m"libftTester"\033[m"
@@ -30,7 +33,6 @@ git clone https://github.com/Tripouille/libftTester.git
 cd libftTester/
 make a
 cd ..
-rm -rf Libftest/ libft-war-machine/ libft-unit-test/ libftTester/
 echo -e "\033[32;1m"make fclean"\033[m"
 read $a
 make
@@ -53,8 +55,9 @@ echo -e "\033[32;1m"relink"\033[m"
 read $a
 make
 echo -e "\033[32;1m"DONE"\033[m"
+rm -rf libft-unit-test libft-war-machine libftTester Libftest
 
-
+make fclean
 
 
 

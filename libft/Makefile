@@ -6,7 +6,7 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 21:31:47 by seongwch          #+#    #+#              #
-#    Updated: 2021/12/10 21:53:04 by seongwch         ###   ########.fr        #
+#    Updated: 2021/12/11 18:09:58 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ else
 endif
 
 %.o : %.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $<
 
 $(NAME) : $(OBJECTS)
 	$(AR) $(ARFLAGS) $@ $^
