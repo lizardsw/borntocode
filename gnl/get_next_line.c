@@ -1,33 +1,68 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/04 21:32:22 by seongwch          #+#    #+#             */
+/*   Updated: 2022/01/04 21:44:02 by seongwch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "get_next_line.h"
 
-#include <stdio.h>
-#include <fcntl.h>
-
-#define BUFF_SIZE 4
-
-
-
-
-char *get_next_line(int fd)
+char	*line_split(char **storage)
 {
+	char	*line;
+	char	*temp;
+	int		i;
+	int		j;
 
-
-
-	return 0;
+	i = 0;
+	j = -1;
+	if (*storage == NULL)
+		return (NULL);
+	if (ft_strchr(*storage, '\n'))
+	{
+		while ((*storage)[i] != '\n')
+			i++;
+		line = (char *)malloc(sizeof(char) * i + 2);
+		if (line == NULL)
+			return (NULL);
+		while (j++ < i)
+			line[j] = (*storage)[j];
+		line[j] = '\0';
+		temp = ft_strdup(&(*storage)[i + 1]);
+		free(*storage);
+		*storage = temp;
+	}
+	else
+	{
+		line = ft_strdup(*storage);
+		free(*storage);
+		*storage = NULL;
+	}
+	return (line);
 }
 
-int	main()
+char	*get_next_line(int fd)
 {
-	int fd;
-	char buff[BUFF_SIZE + 1];
-	ssize_t len;
+	static char	*storage;
+	char		buff[BUFFER_SIZE + 1];
+	int			read_size;
 
-	fd = open("help.txt", O_RDONLY);
-	while ((len = read(fd, buff, BUFF_SIZE)))
+	if (fd <= 0 || BUFFER_SIZE < 1)
+		return (0);
+	while (read_line(fd, buff, &read_size) > 0)
 	{
-		buff[len] = 0;
-		printf("%s,", buff);
+		storage = ft_strjoin(storage, buff);
+		if (storage == NULL)
+			return (NULL);
+		if (ft_strchr(buff, '\n'))
+			return (line_split(&storage));
 	}
-	return 0;
+	if (read_size < 0)
+		return (NULL);
+	return (line_split(&storage));
 }
