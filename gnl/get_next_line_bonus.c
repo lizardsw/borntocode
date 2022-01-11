@@ -4,9 +4,9 @@ char	*help_split(t_list *ptr)
 {
 	char	*line;
 	char	*temp;
-	int	i;
-	int	j;
-	
+	int		i;
+	int		j;
+
 	i = 0;
 	j = -1;
 	while ((ptr -> storage)[i] != '\n')
@@ -17,61 +17,66 @@ char	*help_split(t_list *ptr)
 	while (j++ < i)
 		line[j] = (ptr -> storage)[j];
 	line[j] = '\0';
-	temp = ft_strdup(&(ptr -> storage)[i + 1]);
+	temp = ft_strjoin(&(ptr -> storage)[i + 1], "");
 	free(ptr -> storage);
 	ptr -> storage = temp;
 	return (line);
 }
 
-char	*b_line_split(t_list	*ptr)
+char	*b_line_split(t_list **head, t_list	*ptr, int wanted_fd)
 {
 	char	*line;
 
 	if (ptr -> storage == NULL)
+	{
+		remove_node(head, wanted_fd);
 		return (NULL);
+	}
 	if (ft_strchr(ptr -> storage, '\n'))
 		line = help_split(ptr);
 	else
 	{
-		line = ft_strdup(ptr -> storage);
+		line = ft_strjoin(ptr -> storage, "");
 		free(ptr -> storage);
 		ptr -> storage = NULL;
+		remove_node(head, wanted_fd);
 	}
 	return (line);
 }
 
-char	*get_next_line(int	fd)
+char	*get_next_line(int fd)
 {
 	static t_list	*head;
-	t_list	*ptr;
-	char	buff[BUFFER_SIZE + 1];
-	int		read_size;
-	
+	t_list			*ptr;
+	char			buff[BUFFER_SIZE + 1];
+	char			*temp;
+	int				read_size;
+
 	if (fd <= 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	ptr = search_add_node(&head, fd);
 	while (read_line(fd, buff, &read_size) > 0)
 	{
-			ptr -> storage = ft_strjoin(ptr -> storage, buff);
-			if (ptr -> storage == NULL)
-				return (NULL);
-			if (ft_strchr(ptr -> storage, '\n'))
-				return (b_line_split(ptr));		
+		temp = ft_strjoin(ptr -> storage, buff);
+		free(ptr -> storage);
+		ptr -> storage = temp;
+		if (ptr -> storage == NULL)
+			return (NULL);
+		if (ft_strchr(ptr -> storage, '\n'))
+			return (b_line_split(&head, ptr, fd));
 	}
-	if (read_size < 0)
-		return (NULL);
-	return (b_line_split(ptr));
+	return (b_line_split(&head, ptr, fd));
 }
 
-t_list	*new_node(int fd, char *storage)
+t_list	*new_node(int fd)
 {
-	t_list *new;
+	t_list	*new;
 
 	new = (t_list *)malloc(sizeof(t_list));
 	if (new == NULL)
 		return (NULL);
 	new -> fd = fd;
-	new -> storage = storage;
+	new -> storage = NULL;
 	new -> next = NULL;
 	return (new);
 }
@@ -82,7 +87,7 @@ t_list	*search_add_node(t_list **head, int wanted_fd)
 
 	if ((*head) == NULL)
 	{	
-		(*head) = new_node(wanted_fd, NULL);
+		(*head) = new_node(wanted_fd);
 		return ((*head));
 	}
 	ptr = (*head);
@@ -95,6 +100,6 @@ t_list	*search_add_node(t_list **head, int wanted_fd)
 	ptr = (*head);
 	while (ptr -> next != NULL)
 		ptr = ptr -> next;
-	ptr -> next = new_node(wanted_fd, NULL);
+	ptr -> next = new_node(wanted_fd);
 	return (ptr -> next);
 }

@@ -52,6 +52,8 @@ char	*ft_strjoin(char *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+	if (s1 != NULL && s1[0] == '\0')
+		return (NULL);
 	if (s1 == NULL)
 		s1 = "";
 	new = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
@@ -61,32 +63,10 @@ char	*ft_strjoin(char *s1, char const *s2)
 	{
 		new[i++] = s1[j++];
 	}
-	if (i != 0)
-		free(s1);
 	j = 0;
 	while (s2[j] != '\0')
 	{
 		new[i++] = s2[j++];
-	}
-	new[i] = '\0';
-	return (new);
-}
-
-char	*ft_strdup(const char *str)
-{
-	int		i;
-	char	*new;
-
-	if (str[0] == '\0')
-		return (NULL);
-	i = 0;
-	new = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
-	if (new == NULL)
-		return (NULL);
-	while (str[i] != '\0')
-	{
-		new[i] = str[i];
-		i++;
 	}
 	new[i] = '\0';
 	return (new);
@@ -104,4 +84,26 @@ int	read_line(int fd, char *buff, int *read_size)
 		buff[*read_size] = '\0';
 		return (*read_size);
 	}
+}
+
+void	remove_node(t_list **head, int wanted_fd)
+{
+	t_list	*ptr;
+	t_list	*pre;
+
+	ptr = (*head);
+	pre = (*head);
+	if (ptr -> fd == wanted_fd && ptr -> next == NULL)
+	{
+		free(ptr);
+		(*head) = NULL;
+		return ;
+	}
+	while (ptr -> fd != wanted_fd)
+	{
+		pre = ptr;
+		ptr = ptr -> next;
+	}
+	pre -> next = ptr -> next;
+	free(ptr);
 }
