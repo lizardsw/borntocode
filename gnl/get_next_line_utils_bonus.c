@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -44,7 +44,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new;
 	size_t	i;
@@ -93,12 +93,19 @@ void	remove_node(t_list **head, int wanted_fd)
 
 	ptr = (*head);
 	pre = (*head);
+	while (ptr != NULL)
+	{
+		ptr = ptr -> next;
+	}
+	printf("\n");
+	ptr = (*head);
 	if (ptr -> fd == wanted_fd && ptr -> next == NULL)
 	{
 		free(ptr);
 		(*head) = NULL;
 		return ;
 	}
+
 	while (ptr -> fd != wanted_fd)
 	{
 		pre = ptr;

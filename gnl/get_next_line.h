@@ -20,23 +20,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_list
-{
-	int				fd;
-	char			*storage;
-	struct s_list	*next;
-}	t_list;
-
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *str, int c);
-char	*ft_strjoin(char *s1, char const *s2);
-char	*b_line_split(t_list **head, t_list *ptr, int wanted_fd);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(const char *str);
 char	*line_split(char **storage);
+char	*help_split(char **storage);
 char	*get_next_line(int fd);
 int		read_line(int fd, char *buff, int *read_size);
-void	remove_node(t_list **head, int wanted_fd);
-
-t_list	*new_node(int fd);
-t_list	*search_add_node(t_list **head, int wanted_fd);
 
 #endif

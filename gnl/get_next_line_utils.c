@@ -44,7 +44,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new;
 	size_t	i;
@@ -61,8 +61,6 @@ char	*ft_strjoin(char *s1, char const *s2)
 	{
 		new[i++] = s1[j++];
 	}
-	if (i != 0)
-		free(s1);
 	j = 0;
 	while (s2[j] != '\0')
 	{
