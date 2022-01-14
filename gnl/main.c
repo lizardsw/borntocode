@@ -19,7 +19,14 @@ int main()
         str = get_next_line(fd);
         printf("*********fd - result********\n%s\n", str);
         str = get_next_line(fd1);
+        printf("*********fd - result********\n%s\n", str);
+        /*
         printf("*********fd1 - result********\n%s\n", str);
+        str = get_next_line(1004);
+        printf("*********fdx - result********\n%s\n", str);
+        str = get_next_line(1005);
+        printf("*********fdx - result********\n%s\n", str);
+        */
         i++;
     }
     return 0;

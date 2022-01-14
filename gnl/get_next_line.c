@@ -6,13 +6,13 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 21:32:22 by seongwch          #+#    #+#             */
-/*   Updated: 2022/01/04 21:44:02 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:52:45 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*help_split(char ** storage)
+char	*help_split(char **storage)
 {
 	char	*line;
 	char	*temp;
@@ -22,7 +22,7 @@ char	*help_split(char ** storage)
 	i = 0;
 	j = -1;
 	while ((*storage)[i] != '\n')
-			i++;
+		i++;
 	line = (char *)malloc(sizeof(char) * i + 2);
 	if (line == NULL)
 		return (NULL);
@@ -38,7 +38,7 @@ char	*help_split(char ** storage)
 char	*line_split(char **storage)
 {
 	char	*line;
-	
+
 	if (*storage == NULL)
 		return (NULL);
 	if (ft_strchr(*storage, '\n'))

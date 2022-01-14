@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 21:31:53 by seongwch          #+#    #+#             */
-/*   Updated: 2022/01/06 16:41:16 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/01/14 16:04:44 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,16 @@ void	remove_node(t_list **head, int wanted_fd)
 
 	ptr = (*head);
 	pre = (*head);
-	while (ptr != NULL)
-	{
-		ptr = ptr -> next;
-	}
-	printf("\n");
-	ptr = (*head);
-	if (ptr -> fd == wanted_fd && ptr -> next == NULL)
+	if (ptr -> fd == wanted_fd)
 	{
 		free(ptr);
-		(*head) = NULL;
+		if (pre -> next == NULL)
+			(*head) = NULL;
+		else
+			(*head) = pre -> next;
 		return ;
 	}
-
+	ptr = (*head);
 	while (ptr -> fd != wanted_fd)
 	{
 		pre = ptr;

@@ -92,7 +92,6 @@ t_list	*new_node(int fd)
 	new -> fd = fd;
 	new -> storage = NULL;
 	new -> next = NULL;
-	printf("new_node : %d\n", new -> fd);
 	return (new);
 }
 
@@ -110,7 +109,7 @@ t_list	*search_add_node(t_list **head, int wanted_fd)
 	ptr = (*head);
 	while (ptr != NULL)
 	{
-		if (ptr -> fd == wanted_fd)////////////////////
+		if (ptr -> fd == wanted_fd)
 			return (ptr);
 		ptr = ptr -> next;
 	}
@@ -119,6 +118,6 @@ t_list	*search_add_node(t_list **head, int wanted_fd)
 	{
 		ptr = ptr -> next;
 	}
-	ptr -> next = new_node(wanted_fd);////////////////
+	ptr -> next = new_node(wanted_fd);
 	return (ptr -> next);
 }
