@@ -19,7 +19,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_list
 {
@@ -32,7 +31,7 @@ size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*help_split(t_list *ptr);
-char	*b_line_split(t_list **head, t_list *ptr, int wanted_fd);
+char	*b_line_split(t_list **head, t_list *ptr, int wanted_fd, int read_size);
 char	*get_next_line(int fd);
 int		read_line(int fd, char *buff, int *read_size);
 void	remove_node(t_list **head, int wanted_fd);

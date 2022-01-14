@@ -59,8 +59,8 @@ char	*get_next_line(int fd)
 	char		buff[BUFFER_SIZE + 1];
 	int			read_size;
 
-	if (fd <= 0 || BUFFER_SIZE < 1)
-		return (0);
+	if (fd < 0 || BUFFER_SIZE < 1)
+		return (NULL);
 	while (read_line(fd, buff, &read_size) > 0)
 	{
 		temp = ft_strjoin(storage, buff);
@@ -72,6 +72,9 @@ char	*get_next_line(int fd)
 			return (line_split(&storage));
 	}
 	if (read_size < 0)
+	{
+		free(storage);
 		return (NULL);
+	}
 	return (line_split(&storage));
 }

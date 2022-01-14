@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 	char			*temp;
 	int				read_size;
 
-	if (fd <= 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	ptr = search_add_node(&head, fd);
 	if (ptr == NULL)
@@ -33,9 +33,9 @@ char	*get_next_line(int fd)
 		if (ptr -> storage == NULL)
 			return (NULL);
 		if (ft_strchr(ptr -> storage, '\n'))
-			return (b_line_split(&head, ptr, fd));
+			return (b_line_split(&head, ptr, fd, read_size));
 	}
-	return (b_line_split(&head, ptr, fd));
+	return (b_line_split(&head, ptr, fd, read_size));
 }
 
 char	*help_split(t_list *ptr)
@@ -61,10 +61,17 @@ char	*help_split(t_list *ptr)
 	return (line);
 }
 
-char	*b_line_split(t_list **head, t_list	*ptr, int wanted_fd)
+char	*b_line_split(t_list **head, t_list	*ptr, int wanted_fd, int read_size)
 {
 	char	*line;
 
+	if (read_size < 0)
+	{
+		free(ptr -> storage);
+		ptr -> storage = NULL;
+		remove_node(head, wanted_fd);
+		return (NULL);
+	}
 	if (ptr -> storage == NULL)
 	{
 		remove_node(head, wanted_fd);
