@@ -7,8 +7,8 @@ cat tmp >> main.c
 cp ../*.a .
 cp ../ft_printf.h .
 gcc -L./ -lftprintf main.c 2> /dev/null
-./a.out
 cd ..
+./a.out
 make fclean
 ​
 echo -e "\033[32;1m"ft_printf_tester"\033[m"
@@ -30,3 +30,5 @@ make m
 # make a
 cd ..
 make fclean
+
+rm -rf printf42_mandatorytester ft_printf_tester printfTester

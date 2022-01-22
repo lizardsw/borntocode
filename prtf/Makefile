@@ -4,10 +4,9 @@ AR = ar
 ARFLAGS = rs
 RM = rm -f
 make = make
-NAME = ft_printf.a
+NAME = libftprintf.a
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft
-
 
 SOURCES = ft_printf.c\
 	ft_printf1.c\
@@ -25,10 +24,11 @@ $(LIBFT) :
 	$(make) -C $(LIBFT_DIR) all
 
 $(NAME) : $(OBJECTS) $(LIBFT)
-	$(AR) $(ARFLAGS) $@ $^ 
+	cp $(LIBFT) ./$(NAME)
+	$(AR) $(ARFLAGS) $@ $(OBJECTS)
 
 clean :
-	$(make) -C $(LIBFT_DIR) fclean
+	$(make) -C $(LIBFT_DIR) clean
 	$(RM) $(OBJECTS)
 
 fclean :
@@ -38,4 +38,3 @@ fclean :
 re : fclean all
 
 .PHONY : all bonus re fclean clean
-

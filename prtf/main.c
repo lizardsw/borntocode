@@ -1,14 +1,16 @@
 #include "ft_printf.h"
+#include <stdio.h>
 
 int main()
 {
     char c = 'a';
-    char *str = "seongwch";
-    int i = 10;
+    char *str;
+    int d = 10;
+    int i = -10u;
 
-
-
-    ft_printf("hi! my name is %c\nhi! str : %s\nmy age : %d\n pt : %p\n",c,str,i,&i);
-
+    printf("%d", -10u);
+    str = NULL;
+    printf("no - %x", 3735929054u);
+    //ft_printf("ft - %x\n", 3735929054u);
     return 0;
 }
