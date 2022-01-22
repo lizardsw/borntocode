@@ -22,17 +22,17 @@ all : $(NAME)
 	$(CC) $(CFLAGS) -c $^
 
 $(LIBFT) :
-	$(make) all -C $(LIBFT_DIR)
+	$(make) -C $(LIBFT_DIR) all
 
 $(NAME) : $(OBJECTS) $(LIBFT)
 	$(AR) $(ARFLAGS) $@ $^ 
 
 clean :
-	$(make) fclean -C $(LIBFT_DIR)
+	$(make) -C $(LIBFT_DIR) fclean
 	$(RM) $(OBJECTS)
 
 fclean :
-	$(make) fclean -C $(LIBFT_DIR)
+	$(make) -C $(LIBFT_DIR) fclean
 	$(RM) $(OBJECTS) $(NAME)
 
 re : fclean all
