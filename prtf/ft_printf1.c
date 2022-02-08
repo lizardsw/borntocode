@@ -45,8 +45,7 @@ void	print_s(va_list *ap, int *re)
 		str = ft_strdup("(null)");
 		check = 1;
 	}
-	write(1, str, ft_strlen(str));
-	(*re) = (*re) + ft_strlen(str);
+	(*re) += write(1, str, ft_strlen(str));
 	if (check == 1)
 		free(str);
 }

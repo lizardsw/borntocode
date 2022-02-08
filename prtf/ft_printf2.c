@@ -31,11 +31,11 @@ void	print_p(va_list *ap, int *re)
 
 void	print_x(va_list *ap, int *re)
 {
-	int		number;
+	unsigned int		number;
 	char	*str;
 
-	number = va_arg(*ap, int);
-	str = int_change_base(number, "0123456789abcdef");
+	number = va_arg(*ap, unsigned int);
+	str = long_change_base(number, "0123456789abcdef");
 	if (str == NULL)
 		return ;
 	write(1, str, ft_strlen(str));
@@ -45,10 +45,10 @@ void	print_x(va_list *ap, int *re)
 
 void	print_lx(va_list *ap, int *re)
 {
-	int		number;
+	unsigned int		number;
 	char	*str;
 
-	number = va_arg(*ap, int);
+	number = va_arg(*ap, unsigned int);
 	str = int_change_base(number, "0123456789ABCDEF");
 	if (str == NULL)
 		return ;
