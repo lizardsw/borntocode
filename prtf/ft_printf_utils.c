@@ -87,32 +87,3 @@ char	*long_change_base(unsigned long long n, char *base)
 	}
 	return (new);
 }
-
-char	*int_change_base(unsigned int n, char *base)
-{
-	char			*new;
-	int				num_size;
-	unsigned int	temp;
-
-	num_size = 0;
-	temp = n;
-	if (n == 0)
-		return (zero_base());
-	while (temp != 0)
-	{
-		temp = temp / 16;
-		num_size++;
-	}
-	new = (char *)malloc(num_size * sizeof(char) + 1);
-	if (new == NULL)
-		return (NULL);
-	new[num_size] = '\0';
-	num_size = num_size - 1;
-	while (n != 0)
-	{
-		new[num_size] = base[n % 16];
-		num_size--;
-		n = n / 16;
-	}
-	return (new);
-}

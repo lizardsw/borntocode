@@ -28,8 +28,7 @@ void	print_d_i(va_list *ap, int *re)
 
 	num = va_arg(*ap, int);
 	str = ft_itoa(num);
-	write(1, str, ft_strlen(str));
-	(*re) = (*re) + ft_strlen(str);
+	(*re) = (*re) + write(1, str, ft_strlen(str));
 	free(str);
 }
 
@@ -57,7 +56,6 @@ void	print_u(va_list *ap, int *re)
 
 	num = va_arg(*ap, unsigned int);
 	str = ft_uitoa(num);
-	write(1, str, ft_strlen(str));
-	(*re) = (*re) + ft_strlen(str);
+	(*re) += write(1, str, ft_strlen(str));
 	free(str);
 }

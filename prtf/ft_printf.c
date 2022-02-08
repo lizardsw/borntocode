@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	is_format(const char *str, va_list *ap, int *i, int *re)
+int	is_format(const char *str, va_list *ap, int *i, int *re)
 {
 	(*i)++;
 	if (str[*i] == 'c')
@@ -30,10 +30,10 @@ void	is_format(const char *str, va_list *ap, int *i, int *re)
 	else if (str[*i] == 'X')
 		print_lx(ap, re);
 	else if (str[*i] == '%')
-	{
-		(*re)++;
-		write(1, "%", 1);
-	}
+		(*re) += write(1, "%", 1);
+	else
+		return (-1);
+	return (1);
 }
 
 int	ft_printf(const char *str, ...)
@@ -48,7 +48,10 @@ int	ft_printf(const char *str, ...)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
-			is_format(str, &ap, &i, &re);
+		{
+			if (i >= (int)ft_strlen(str) || is_format(str, &ap, &i, &re) == -1)
+				return (-1);
+		}
 		else
 		{
 			re++;
