@@ -16,14 +16,8 @@ int bye(void)
 
 int main()
 {
-    char c = 'a';
-    char *str;
-    int d = 10;
-    int i = -10u;
-
-    str = NULL;
-    if (hi() == 1 || bye() == -1)
-        return (0);
-    printf("end\n");
+   char *s = "abc%a\n";
+   printf("%%%qaaa");
+   
     return 0;
 }

@@ -50,13 +50,13 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			if (i >= (int)ft_strlen(str) || is_format(str, &ap, &i, &re) == -1)
+			{
+				va_end(ap);
 				return (-1);
+			}
 		}
 		else
-		{
-			re++;
-			write(1, &str[i], 1);
-		}
+			re += write(1, &str[i], 1);
 		i++;
 	}
 	va_end(ap);
