@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 	AtoB(pocket, 1, A -> size);
 	show_deq(A);
 	show_deq(B);
+	//show_deq(rule);
 /*
 	pop_back(A);
 	pop_front(A);

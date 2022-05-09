@@ -76,7 +76,7 @@ void node_index_swap(t_node *A, t_node *B);
 
 ///pivot.c
 void AtoB(t_pocket *pocket, int start, int end);
-void BtoA(t_deq *A, t_deq *B, int start, int end);
+void BtoA(t_pocket *pocket, int start, int end);
 int setting_pivot(int start, int end, int *pivot1, int *pivot2);
 //////
 #endif 
