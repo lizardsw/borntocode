@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-
-
 int main(int argc, char **argv)
 {
 	t_deq *A;
@@ -17,7 +15,11 @@ int main(int argc, char **argv)
 	show_deq(A);
 	sort_index_deq(A);
 	show_deq(A);
+	show_deq(B);
 
+	total_function(A, B);
+	show_deq(A);
+	show_deq(B);
 
 /*
 	pop_back(A);

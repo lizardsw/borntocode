@@ -49,4 +49,9 @@ void ft_rrr(t_deq *A, t_deq *B);
 
 void sort_index_deq(t_deq *deq);
 void node_index_swap(t_node *A, t_node *B);
+
+void total_function(t_deq *A, t_deq *B);
+void push_node(t_deq *A, t_deq *B, int number);
+void swap_node(t_deq *B, int pivot1);
+void setting_pivot(t_deq *deq, int *pivot1, int *pivot2);
 #endif 

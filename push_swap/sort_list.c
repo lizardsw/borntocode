@@ -1,18 +1,5 @@
 #include "push_swap.h"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 void sort_index_deq(t_deq *deq)
 {
 	t_node *pt;
