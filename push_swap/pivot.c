@@ -1,63 +1,74 @@
 #include "push_swap.h"
 
-
-void total_function(t_deq *A, t_deq *B)
+void AtoB(t_pocket *pocket, int start, int end)
 {
-	
-}
-
-void AtoB(t_deq *A, t_deq *B, int start, int end)
-{
-	int pivot1
-	int pivot2
-
-	setting_pivot(A, &pivot1, &pivot2);
-	
-	if (start)
-
-
-
-
-}
-
-
-
-void push_node(t_deq *A, t_deq *B, int number)
-{	
 	int pivot1;
 	int pivot2;
+	int range;
 	
-	setting_pivot(A, &pivot1, &pivot2);
-	show_deq(A);
-	show_deq(B);
-	ft_printf("\n");
-	if (number < 1)
+	range = setting_pivot(start, end, &pivot1, &pivot2);
+	ft_printf("pivot1 : %d, pivot2 : %d\n", pivot1, pivot2);
+	if (range <= 1)
 		return;
-	if (A -> start -> index < pivot2)
+	while (range >= 1)
 	{
-		ft_pb(B, A);
-		swap_node(B, pivot2);
-		push_node(A, B, --number);
+		if (pocket -> A -> start -> index > pivot2)
+			ft_rotate(pocket , 1);
+		else
+		{
+			if (pocket -> A -> start -> index <= pivot1)
+				ft_rotate(pocket, 2);
+			else
+			{
+				ft_push(pocket, 2);
+				ft_rotate(pocket, 2);
+			}
+		}
+		range--;
 	}
-	else
-	{
-		ft_ra(A);
-		push_node(A, B, --number);
-	}
+	AtoB(pocket, pivot2 + 1, end);
+	/*
+	BtoA(A, B, pivot1 + 1, pivot2);
+	BtoA(A, B, start, pivot1);
+	*/
 }
 
-void swap_node(t_deq *B, int pivot1)
+void BtoA(t_deq *A, t_deq *B, int start, int end)
 {
-	if (B -> start -> index < pivot1)
-		ft_rb(B);
+	int pivot1;
+	int pivot2;
+	int range;
+	
+	range = start - end + 1;
+	setting_pivot(start, end, &pivot1, &pivot2);
+	if (range <= 1)
+		return;
+	while (range >= 1)
+	{
+		if (A -> start -> index > pivot2)
+			ft_rb(A);
+		else
+		{
+			if (A -> start -> index <= pivot1)
+				ft_pa(B, A);
+			else
+			{
+				ft_pa(B, A);
+				ft_ra(B);
+			}
+		}
+		range--;
+	}
 }
 
-void setting_pivot(t_deq *deq, int *pivot1, int *pivot2)
+int setting_pivot(int start, int end, int *pivot1, int *pivot2)
 {
 	int size;
 
-	size = deq -> size;
-	*pivot1 = size / 3;
-	*pivot2 = (size / 3) * 2;
+	size = end - start;
+	*pivot1 = start + size / 3;
+	*pivot2 = start + (size / 3) * 2;
+
+	return (size + 1);
 }
 

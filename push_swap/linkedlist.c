@@ -1,5 +1,18 @@
 #include "push_swap.h"
 
+t_pocket *new_pocket(t_deq *A, t_deq *B, t_deq *rule)
+{
+	t_pocket *new;
+
+	new = (t_pocket *)malloc(sizeof(t_pocket));
+	if (new == NULL)
+		return (NULL);
+	new -> A = A;
+	new -> B = B;
+	new -> rule = rule;
+	return (new);
+}
+
 t_deq	*new_deq(void)
 {
 	t_deq	*new;
