@@ -43,6 +43,8 @@ void push_back(t_deq *deq, t_node *node);
 t_node *pop_front(t_deq *deq);
 t_node *pop_back(t_deq *deq);
 void show_deq(t_deq *deq);
+void delete_node(t_deq *deq, t_node *pt);
+
 ////////
 
 ////push_rules.c
@@ -67,11 +69,13 @@ void ft_swap(t_pocket *pocket, int num);
 void ft_push(t_pocket *pocket, int num);
 void ft_rotate(t_pocket *pocket, int num);
 void ft_revrotate(t_pocket *pocket, int num);
+void rule_push_back(t_deq *deq, t_node *ptr, int i, int num);
 /////
 
 ////sort_list.c
 void sort_index_deq(t_deq *deq);
-void node_index_swap(t_node *A, t_node *B);
+void quick(int *arr, int start , int end);
+void indexing_node(t_deq *deq, int *arr);
 ////////
 
 ///pivot.c
@@ -79,4 +83,7 @@ void AtoB(t_pocket *pocket, int start, int end);
 void BtoA(t_pocket *pocket, int start, int end);
 int setting_pivot(int start, int end, int *pivot1, int *pivot2);
 //////
+
+void AtoB_small_sort(t_pocket *pocket, int start, int end);
+void BtoA_small_sort(t_pocket *pocket, int start, int end);
 #endif 

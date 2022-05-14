@@ -5,9 +5,13 @@ void ft_sa(t_deq *A)
 	t_node *ptr;
 	t_node *temp;
 
-	if (A -> size <= 1)
+	if (A -> size <= 2)
 	{
-			return;
+		if (A -> size == 2)
+		{
+			push_back(A, pop_front(A));
+		}
+		return ;
 	}
 	ptr = A -> start -> next -> next;
 	temp = A -> start -> next;

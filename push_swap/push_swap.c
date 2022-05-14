@@ -21,25 +21,12 @@ int main(int argc, char **argv)
 	sort_index_deq(A);
 	show_deq(A);
 	show_deq(B);
-
+	
 	ft_printf("--------------------\n");
 	AtoB(pocket, 1, A -> size);
 	show_deq(A);
 	show_deq(B);
-	//show_deq(rule);
-/*
-	pop_back(A);
-	pop_front(A);
-	show_deq(A);
-
-
-	ft_pa(B,A);
-	show_deq(A);
-	show_deq(B);
-	ft_ra(A);
-	show_deq(A);
-	ft_rra(A);
-	show_deq(A);
-*/
+	show_deq(rule);
+	
 	return 0;
 }
