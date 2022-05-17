@@ -27,6 +27,8 @@ int main(int argc, char **argv)
 	show_deq(A);
 	show_deq(B);
 	show_deq(rule);
-	
+	rule_show_deq(rule);
+
+
 	return 0;
 }

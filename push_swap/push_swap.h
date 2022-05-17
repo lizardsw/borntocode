@@ -42,6 +42,7 @@ void push_front(t_deq *deq, t_node *node);
 void push_back(t_deq *deq, t_node *node);
 t_node *pop_front(t_deq *deq);
 t_node *pop_back(t_deq *deq);
+void rule_show_deq(t_deq *deq);
 void show_deq(t_deq *deq);
 void delete_node(t_deq *deq, t_node *pt);
 
@@ -49,18 +50,15 @@ void delete_node(t_deq *deq, t_node *pt);
 
 ////push_rules.c
 void ft_sa(t_deq *A);
-void ft_sb(t_deq *B);
 void ft_ss(t_deq *A, t_deq *B);
 
 void ft_pa(t_deq *A, t_deq *B);
 void ft_pb(t_deq *B, t_deq *A);
 
 void ft_ra(t_deq *A);
-void ft_rb(t_deq *B);
 void ft_rr(t_deq *A, t_deq *B);
 
 void ft_rra(t_deq *A);
-void ft_rrb(t_deq *B);
 void ft_rrr(t_deq *A, t_deq *B);
 ////////
 
