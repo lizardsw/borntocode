@@ -3,7 +3,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-#include "./libft/libft.h"
+//#include "./libft/libft.h"
 #include "./prtf/ft_printf.h"
 
 typedef struct s_node
@@ -84,4 +84,10 @@ int setting_pivot(int start, int end, int *pivot1, int *pivot2);
 
 void AtoB_small_sort(t_pocket *pocket, int start, int end);
 void BtoA_small_sort(t_pocket *pocket, int start, int end);
+
+void small_sort(t_pocket *pocket, int start, int end);
+void B_two_sort(t_pocket *pocket, int start, int end);
+void three_sort(t_pocket *pocket, int start, int end);
+void four_sort(t_pocket *pocket, int start, int end);
+void five_sort(t_pocket *pocket, int start, int end);
 #endif 

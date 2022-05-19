@@ -1,17 +1,20 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar
-ARFLAGS = rs
 RM = rm -f
 make = make
-NAME = swap
+NAME = a.out
+LIBPRT = libftprintf.a
 
-SOURCES = *.c
-
-OBJECTS = $(SOURCE:.c=.o)
+SOURCES = $(wildcard *.c)
+OBJECTS = $(SOURCES: .c = .o)
 
 all : $(NAME)
 
-$(NAME) : $(SOURCES)
-	gcc *.c libftprintf.a
+%.o : %.c
+	$(CC) $(CFLAGS) -c $^
 
+$(NAME) : $(OBJECTS) $(LIBPRT)
+	gcc -o $(NAME) $(OBJECTS) $(LIBPRT)
+
+clean :
+	rm *.o

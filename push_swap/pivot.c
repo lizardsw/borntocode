@@ -16,10 +16,16 @@ void AtoB(t_pocket *pocket, int start, int end)
 	if (range <= 2)
 	{
 		AtoB_small_sort(pocket, start, end);
-	//	show_deq(pocket -> A);
-	//	show_deq(pocket -> B);
 		return;
 	}
+	if (range == pocket -> A -> size && range <= 5)
+	{
+		small_sort(pocket, start, end);
+		return;
+	//	show_deq(pocket -> A);
+	//	show_deq(pocket -> B);
+	}
+
 	while (range >= 1)
 	{
 		if (pocket -> A -> start -> index > pivot[1])

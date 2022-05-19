@@ -1,1 +1,7 @@
-ARG=$(seq 1 500 | shuf | tr '\n' ' '); ./push_swap $ARG | wc -l 
+echo $ARG | tr ' ' '\n' | wc -l
+
+ export ARG=$(./random_numbers 100 1 500)  
+
+ ./push_swap $ARG | ./checker_Mac $ARG 
+
+ ./push_swap $ARG | wc -l

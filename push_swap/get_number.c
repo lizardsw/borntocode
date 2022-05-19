@@ -22,6 +22,8 @@ char	*total_str(char **argv, int argc)
 
 	i = 1;
 	new = "";
+	if (new == NULL)
+		return NULL;
 	while (i < argc)
 	{
 		temp = ft_strjoin(new, " ");
@@ -61,11 +63,15 @@ int	check_num_repeat(t_deq *A)
 int	get_number(char **argv, int argc, t_deq *A)
 {
 	char	**number_list;
+	char 	*temp;
 	int		i;
 	int		number;
 
 	i = 0;
-	number_list = ft_split(total_str(argv, argc), ' ');
+	
+	temp = total_str(argv, argc);
+	number_list = ft_split(temp, ' ');
+	/*
 	while (number_list[i] != NULL)
 	{
 		number = check_number(number_list[i]);
@@ -83,5 +89,6 @@ int	get_number(char **argv, int argc, t_deq *A)
 		ft_printf("error!\n");
 		return (-1);
 	}
+	*/
 	return (1);
 }

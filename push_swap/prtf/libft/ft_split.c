@@ -115,6 +115,5 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	j = 0;
-	new = make_split(new, s, c);
-	return (new);
+	return (make_split(new, s, c));
 }
