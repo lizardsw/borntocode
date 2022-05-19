@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-void AtoB_small_sort(t_pocket *pocket, int start, int end)
+void	atob_small_sort(t_pocket *pocket, int start, int end)
 {
-	int range;
+	int	range;
 
 	range = end - start + 1;
 	if (range == 2)
@@ -12,9 +12,9 @@ void AtoB_small_sort(t_pocket *pocket, int start, int end)
 	}
 }
 
-void BtoA_small_sort(t_pocket *pocket, int start, int end)
+void	btoa_small_sort(t_pocket *pocket, int start, int end)
 {
-	int range;
+	int	range;
 
 	range = end - start + 1;
 	if (range == 1)

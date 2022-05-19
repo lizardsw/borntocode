@@ -1,37 +1,13 @@
 #include "push_swap.h"
 
-void AtoB(t_pocket *pocket, int start, int end)
+void	atob_utils(t_pocket *pocket, int *pivot, int *i, int *j)
 {
-	int pivot[2];
-	int range;
-	int i;
-	int j;
-	
-	i = 0;
-	j = 0;
-	range = setting_pivot(start, end, &pivot[0], &pivot[1]);
-	//ft_printf("\n****************AtoB start!****************");
-	//ft_printf("\nstart : %d, end : %d pivot1 : %d, pivot2 : %d\n",start, end, pivot1, pivot2);
-	//ft_printf("(%d ~ %d) (%d ~ %d) (%d ~ %d)\n\n", start, pivot1, pivot1 + 1, pivot2, pivot2 + 1, end);
-	if (range <= 2)
-	{
-		AtoB_small_sort(pocket, start, end);
-		return;
-	}
-	if (range == pocket -> A -> size && range <= 5)
-	{
-		small_sort(pocket, start, end);
-		return;
-	//	show_deq(pocket -> A);
-	//	show_deq(pocket -> B);
-	}
-
-	while (range >= 1)
+	while (pivot[2] >= 1)
 	{
 		if (pocket -> A -> start -> index > pivot[1])
 		{
-			ft_rotate(pocket , 1);
-			j++;
+			ft_rotate(pocket, 1);
+			(*j)++;
 		}
 		else
 		{
@@ -41,60 +17,50 @@ void AtoB(t_pocket *pocket, int start, int end)
 			{
 				ft_push(pocket, 2);
 				ft_rotate(pocket, 2);
-				i++;
+				(*i)++;
 			}
 		}
-		range--;
-	//	show_deq(pocket -> A);
-	//	show_deq(pocket -> B);
-	//	ft_printf("\n");
+		pivot[2]--;
 	}
-	while (i != 0)
-	{
-		ft_revrotate(pocket, 2);
-		i--;
-	}
-	while (j != 0)
-	{
-		ft_revrotate(pocket, 1);
-		j--;
-	}
-	//ft_printf("\nreroate finished!\n\n");
-	//show_deq(pocket -> A);
-	//show_deq(pocket -> B);
-	//ft_printf("\n");
-	AtoB(pocket, pivot[1] + 1, end);
-	BtoA(pocket, pivot[0] + 1, pivot[1]);
-	BtoA(pocket, start, pivot[0]);
 }
 
-void BtoA(t_pocket *pocket, int start, int end)
+void	atob(t_pocket *pocket, int start, int end)
 {
-	int pivot[2];
-	int range;
-	int i;
-	int j;
-	int k;
-	
+	int	pivot[3];
+	int	i;
+	int	j;
+
 	i = 0;
 	j = 0;
-	range = setting_pivot(start, end, &pivot[0], &pivot[1]);
-	//ft_printf("\n******************BtoA start!********************");
-	//ft_printf("\nstart : %d, end : %d pivot1 : %d, pivot2 : %d\n",start, end, pivot1, pivot2);
-	//ft_printf("(%d ~ %d) (%d ~ %d) (%d ~ %d)\n\n", start, pivot1, pivot1 + 1, pivot2, pivot2 + 1, end);
-	if (range <= 2)
+	setting_pivot(start, end, pivot);
+	if (pivot[2] <= 2)
 	{
-		BtoA_small_sort(pocket, start, end);
-	//	show_deq(pocket -> A);
-	//	show_deq(pocket -> B);
-		return;
+		atob_small_sort(pocket, start, end);
+		return ;
 	}
-	while (range >= 1)
+	if (pivot[2] == pocket -> A -> size && pivot[2] <= 5)
+	{
+		small_sort(pocket, start, end);
+		return ;
+	}
+	atob_utils(pocket, pivot, &i, &j);
+	while (i-- != 0)
+		ft_revrotate(pocket, 2);
+	while (j-- != 0)
+		ft_revrotate(pocket, 1);
+	atob(pocket, pivot[1] + 1, end);
+	btoa(pocket, pivot[0] + 1, pivot[1]);
+	btoa(pocket, start, pivot[0]);
+}
+
+void	btoa_utils(t_pocket *pocket, int *pivot, int *i, int *j)
+{
+	while (pivot[2] >= 1)
 	{
 		if (pocket -> B -> start -> index <= pivot[0])
 		{
-			ft_rotate(pocket , 2);
-			j++;
+			ft_rotate(pocket, 2);
+			(*j)++;
 		}
 		else
 		{
@@ -104,47 +70,51 @@ void BtoA(t_pocket *pocket, int start, int end)
 			{
 				ft_push(pocket, 1);
 				ft_rotate(pocket, 1);
-				i++;
+				(*i)++;
 			}
-			k++;
 		}
-	//	show_deq(pocket -> A);
-	//	show_deq(pocket -> B);
-		range--;
+		pivot[2]--;
 	}
-	//ft_printf("\nreroate finished!\n\n");
-	//show_deq(pocket -> A);
-	//show_deq(pocket -> B);
-	
-	AtoB(pocket, pivot[1] + 1, end);
-	while (i != 0)
-	{
-		ft_revrotate(pocket, 1);
-		i--;
-	}
-	AtoB(pocket, pivot[0] + 1, pivot[1]);
-	while (j != 0)
-	{
-		ft_revrotate(pocket, 2);
-		j--;
-	}
-	BtoA(pocket, start, pivot[0]);
 }
 
-int setting_pivot(int start, int end, int *pivot1, int *pivot2)
+void	btoa(t_pocket *pocket, int start, int end)
 {
-	int size;
+	int	pivot[3];
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	setting_pivot(start, end, pivot);
+	if (pivot[2] <= 2)
+	{
+		btoa_small_sort(pocket, start, end);
+		return ;
+	}
+	btoa_utils(pocket, pivot, &i, &j);
+	atob(pocket, pivot[1] + 1, end);
+	while (i-- != 0)
+		ft_revrotate(pocket, 1);
+	atob(pocket, pivot[0] + 1, pivot[1]);
+	while (j-- != 0)
+		ft_revrotate(pocket, 2);
+	btoa(pocket, start, pivot[0]);
+}
+
+void	setting_pivot(int start, int end, int *pivot)
+{
+	int	size;
 
 	size = end - start;
 	if (size + 1 == 3)
 	{
-		*pivot1 = start;
-		*pivot2 = end - 1;
-		return (size + 1);
+		pivot[0] = start;
+		pivot[1] = end - 1;
+		pivot[2] = size + 1;
+		return ;
 	}
-	*pivot1 = start + size / 3;
-	*pivot2 = start + (size / 3) * 2;
-
-	return (size + 1);
+	pivot[0] = start + size / 3;
+	pivot[1] = start + (size / 3) * 2;
+	pivot[2] = size + 1;
+	return ;
 }
-

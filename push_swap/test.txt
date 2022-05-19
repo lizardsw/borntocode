@@ -5,3 +5,5 @@ echo $ARG | tr ' ' '\n' | wc -l
  ./push_swap $ARG | ./checker_Mac $ARG 
 
  ./push_swap $ARG | wc -l
+
+ 	//system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");

@@ -23,7 +23,7 @@ char	*total_str(char **argv, int argc)
 	i = 1;
 	new = "";
 	if (new == NULL)
-		return NULL;
+		return (NULL);
 	while (i < argc)
 	{
 		temp = ft_strjoin(new, " ");
@@ -60,35 +60,39 @@ int	check_num_repeat(t_deq *A)
 	return (1);
 }
 
-int	get_number(char **argv, int argc, t_deq *A)
+void	free_getnumber(char **new)
+{
+	int	i;
+
+	i = 0;
+	while (new[i] != NULL)
+	{
+		free(new[i]);
+		i++;
+	}
+	free(new);
+}
+
+int	get_number(char **argv, int argc, t_deq *A, char *str)
 {
 	char	**number_list;
-	char 	*temp;
 	int		i;
 	int		number;
 
 	i = 0;
-	
-	temp = total_str(argv, argc);
-	number_list = ft_split(temp, ' ');
-	/*
+	number_list = ft_split(str, ' ');
 	while (number_list[i] != NULL)
 	{
 		number = check_number(number_list[i]);
 		if (number < 0)
 		{
-			ft_printf("error!\n");
+			free_getnumber(number_list);
 			return (-1);
 		}
 		else
 			push_back(A, new_node(number));
 		i++;
 	}
-	if (check_num_repeat(A) == -1)
-	{
-		ft_printf("error!\n");
-		return (-1);
-	}
-	*/
+	free_getnumber(number_list);
 	return (1);
 }

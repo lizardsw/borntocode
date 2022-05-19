@@ -30,8 +30,9 @@ typedef struct s_pocket
 
 /////get_number.c
 int check_number(char *);
+int	check_num_repeat(t_deq *A);
 char *total_str(char **argv, int argc);
-int get_number(char **argv, int argc, t_deq *A);
+int get_number(char **argv, int argc, t_deq *A, char *str);
 ///////
 
 /////linkedlist.c
@@ -77,16 +78,18 @@ void indexing_node(t_deq *deq, int *arr);
 ////////
 
 ///pivot.c
-void AtoB(t_pocket *pocket, int start, int end);
-void BtoA(t_pocket *pocket, int start, int end);
-int setting_pivot(int start, int end, int *pivot1, int *pivot2);
+void atob(t_pocket *pocket, int start, int end);
+void btoa(t_pocket *pocket, int start, int end);
+void atob_utils(t_pocket *pocket, int *pivot, int *i, int *j);
+void btoa_utils(t_pocket *pocket, int *pivot, int *i, int *j);
+void setting_pivot(int start, int end, int *pivot);
 //////
 
-void AtoB_small_sort(t_pocket *pocket, int start, int end);
-void BtoA_small_sort(t_pocket *pocket, int start, int end);
+void atob_small_sort(t_pocket *pocket, int start, int end);
+void btoa_small_sort(t_pocket *pocket, int start, int end);
 
 void small_sort(t_pocket *pocket, int start, int end);
-void B_two_sort(t_pocket *pocket, int start, int end);
+void b_two_sort(t_pocket *pocket, int start, int end);
 void three_sort(t_pocket *pocket, int start, int end);
 void four_sort(t_pocket *pocket, int start, int end);
 void five_sort(t_pocket *pocket, int start, int end);

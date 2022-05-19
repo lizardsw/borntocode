@@ -1,26 +1,25 @@
 #include "push_swap.h"
 
-void small_sort(t_pocket *pocket, int start, int end)
+void	small_sort(t_pocket *pocket, int start, int end)
 {
-	int range;
+	int	range;
 
 	range = end - start + 1;
-
 	if (range == 3)
 		three_sort(pocket, start, end);
-	else if(range == 4)
+	else if (range == 4)
 		four_sort(pocket, start, end);
 	else if (range == 5)
 		five_sort(pocket, start, end);
 }
 
-void B_two_sort(t_pocket *pocket, int start, int end)
+void	b_two_sort(t_pocket *pocket, int start, int end)
 {
 	if (pocket -> B -> start -> index == start)
 		ft_swap(pocket, 2);
 }
 
-void three_sort(t_pocket *pocket, int start, int end)
+void	three_sort(t_pocket *pocket, int start, int end)
 {
 	if (pocket -> A -> start -> index == start)
 	{
@@ -32,7 +31,7 @@ void three_sort(t_pocket *pocket, int start, int end)
 	}
 	else if (pocket -> A -> start -> index == start + 1)
 	{
-		if(pocket -> A -> start -> next -> index == start)
+		if (pocket -> A -> start -> next -> index == start)
 			ft_swap(pocket, 1);
 		else
 			ft_revrotate(pocket, 1);
@@ -49,10 +48,10 @@ void three_sort(t_pocket *pocket, int start, int end)
 	}
 }
 
-void four_sort(t_pocket *pocket, int start, int end)
+void	four_sort(t_pocket *pocket, int start, int end)
 {
-	t_node *ptr;
-	int pt;
+	t_node	*ptr;
+	int		pt;
 
 	pt = 0;
 	ptr = pocket -> A -> start;
@@ -71,15 +70,15 @@ void four_sort(t_pocket *pocket, int start, int end)
 	ft_push(pocket, 1);
 }
 
-void five_sort(t_pocket *pocket, int start, int end)
+void	five_sort(t_pocket *pocket, int start, int end)
 {
-	t_node *ptr;
-	int count;
+	t_node	*ptr;
+	int		count;
 
 	count = 2;
 	while (count > 0)
 	{
-		if(pocket -> A -> start -> index <= start + 1)
+		if (pocket -> A -> start -> index <= start + 1)
 		{
 			ft_push(pocket, 2);
 			count--;
@@ -88,7 +87,7 @@ void five_sort(t_pocket *pocket, int start, int end)
 			ft_rotate(pocket, 1);
 	}
 	three_sort(pocket, start + 2, end);
-	B_two_sort(pocket, start, start + 1);
+	b_two_sort(pocket, start, start + 1);
 	ft_push(pocket, 1);
 	ft_push(pocket, 1);
 }
