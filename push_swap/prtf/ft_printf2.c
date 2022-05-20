@@ -32,7 +32,7 @@ void	print_p(va_list *ap, int *re)
 void	print_x(va_list *ap, int *re)
 {
 	unsigned int		number;
-	char	*str;
+	char				*str;
 
 	number = va_arg(*ap, unsigned int);
 	str = long_change_base(number, "0123456789abcdef");
@@ -46,7 +46,7 @@ void	print_x(va_list *ap, int *re)
 void	print_lx(va_list *ap, int *re)
 {
 	unsigned int		number;
-	char	*str;
+	char				*str;
 
 	number = va_arg(*ap, unsigned int);
 	str = int_change_base(number, "0123456789ABCDEF");

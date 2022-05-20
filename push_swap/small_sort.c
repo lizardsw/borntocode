@@ -27,30 +27,30 @@ void	small_sort(t_pocket *pocket, int start, int end)
 
 void	b_two_sort(t_pocket *pocket, int start, int end)
 {
-	if (pocket -> B -> start -> index == start)
+	if (pocket -> b -> start -> index == start)
 		ft_swap(pocket, 2);
 }
 
 void	three_sort(t_pocket *pocket, int start, int end)
 {
-	if (pocket -> A -> start -> index == start)
+	if (pocket -> a -> start -> index == start)
 	{
-		if (pocket -> A -> start -> next -> index == end)
+		if (pocket -> a -> start -> next -> index == end)
 		{
 			ft_swap(pocket, 1);
 			ft_rotate(pocket, 1);
 		}
 	}
-	else if (pocket -> A -> start -> index == start + 1)
+	else if (pocket -> a -> start -> index == start + 1)
 	{
-		if (pocket -> A -> start -> next -> index == start)
+		if (pocket -> a -> start -> next -> index == start)
 			ft_swap(pocket, 1);
 		else
 			ft_revrotate(pocket, 1);
 	}
 	else
 	{
-		if (pocket -> A -> start -> next -> index == start)
+		if (pocket -> a -> start -> next -> index == start)
 			ft_rotate(pocket, 1);
 		else
 		{
@@ -66,7 +66,7 @@ void	four_sort(t_pocket *pocket, int start, int end)
 	int		pt;
 
 	pt = 0;
-	ptr = pocket -> A -> start;
+	ptr = pocket -> a -> start;
 	while (ptr -> index != start)
 	{
 		ptr = ptr -> next;
@@ -90,7 +90,7 @@ void	five_sort(t_pocket *pocket, int start, int end)
 	count = 2;
 	while (count > 0)
 	{
-		if (pocket -> A -> start -> index <= start + 1)
+		if (pocket -> a -> start -> index <= start + 1)
 		{
 			ft_push(pocket, 2);
 			count--;

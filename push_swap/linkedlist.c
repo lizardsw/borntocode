@@ -19,8 +19,8 @@ t_pocket	*new_pocket(t_deq *A, t_deq *B, t_deq *rule)
 	new = (t_pocket *)malloc(sizeof(t_pocket));
 	if (new == NULL)
 		return (NULL);
-	new -> A = A;
-	new -> B = B;
+	new -> a = A;
+	new -> b = B;
 	new -> rule = rule;
 	return (new);
 }
@@ -72,22 +72,4 @@ void	delete_node(t_deq *deq, t_node *pt)
 		deq -> size--;
 		free(pt);
 	}
-}
-
-void	show_deq(t_deq *deq)
-{
-	t_node	*ptr;
-	int		i;
-
-	i = deq -> size;
-	ptr = deq -> end;
-	ft_printf("end ");
-	while (i > 0)
-	{
-		ft_printf("%d(%d) - ", ptr->number, ptr -> index);
-		ptr = ptr -> prev;
-		i--;
-	}
-	ft_printf("start TOP ");
-	ft_printf("%d\n", deq -> size);
 }

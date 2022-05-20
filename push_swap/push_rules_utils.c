@@ -18,18 +18,18 @@ void	ft_swap(t_pocket *pocket, int num)
 
 	ptr = pocket -> rule;
 	if (num == 1)
-		ft_sa(pocket -> A);
+		ft_sa(pocket -> a);
 	else if (num == 2)
-		ft_sa(pocket -> B);
+		ft_sa(pocket -> b);
 	rule_push_back(ptr, ptr -> end, ptr -> size, num);
 }
 
 void	ft_push(t_pocket *pocket, int num)
 {
 	if (num == 1)
-		ft_pa(pocket -> A, pocket -> B);
+		ft_pa(pocket -> a, pocket -> b);
 	else
-		ft_pa(pocket -> B, pocket -> A);
+		ft_pa(pocket -> b, pocket -> a);
 	push_back(pocket -> rule, new_node(num + 10));
 }
 
@@ -39,9 +39,9 @@ void	ft_rotate(t_pocket *pocket, int num)
 
 	ptr = pocket -> rule;
 	if (num == 1)
-		ft_ra(pocket -> A);
+		ft_ra(pocket -> a);
 	else if (num == 2)
-		ft_ra(pocket -> B);
+		ft_ra(pocket -> b);
 	rule_push_back(ptr, ptr -> end, ptr -> size, num + 20);
 }
 
@@ -51,8 +51,8 @@ void	ft_revrotate(t_pocket *pocket, int num)
 
 	ptr = pocket -> rule;
 	if (num == 1)
-		ft_rra(pocket -> A);
+		ft_rra(pocket -> a);
 	else if (num == 2)
-		ft_rra(pocket -> B);
+		ft_rra(pocket -> b);
 	rule_push_back(ptr, ptr -> end, ptr -> size, num + 30);
 }

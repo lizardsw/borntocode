@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 make = make
-NAME = a.out
+NAME = push_swap
 LIBPRT = libftprintf.a
 
 SOURCES = $(wildcard *.c)

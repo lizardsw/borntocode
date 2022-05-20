@@ -14,16 +14,29 @@
 
 int	check_number(char *str)
 {
-	int	i;
+	int		i;
+	int		j;
+	int		sign;
+	int		temp;
 
 	i = 0;
+	sign = 1;
+	if (str[i] == '+' || str[i] == '-')
+	{	
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
 	while (str[i] != '\0')
 	{
 		if (ft_isdigit(str[i]) == 0)
 			return (-1);
 		i++;
 	}
-	return (ft_atoi(str));
+	temp = ft_atoi(str);
+	if (i > 9 && (temp == 0 || temp == -1))
+		return (-1);
+	return (1);
 }
 
 char	*total_str(char **argv, int argc)
@@ -72,17 +85,17 @@ int	check_num_repeat(t_deq *A)
 	return (1);
 }
 
-void	free_getnumber(char **new)
+void	free_getnumber(char **new_str)
 {
 	int	i;
 
 	i = 0;
-	while (new[i] != NULL)
+	while (new_str[i] != NULL)
 	{
-		free(new[i]);
+		free(new_str[i]);
 		i++;
 	}
-	free(new);
+	free(new_str);
 }
 
 int	get_number(char **argv, int argc, t_deq *A, char *str)
@@ -90,19 +103,20 @@ int	get_number(char **argv, int argc, t_deq *A, char *str)
 	char	**number_list;
 	int		i;
 	int		number;
+	int		check;
 
 	i = 0;
 	number_list = ft_split(str, ' ');
 	while (number_list[i] != NULL)
 	{
-		number = check_number(number_list[i]);
-		if (number < 0)
+		check = check_number(number_list[i]);
+		if (check < 0)
 		{
 			free_getnumber(number_list);
 			return (-1);
 		}
 		else
-			push_back(A, new_node(number));
+			push_back(A, new_node(ft_atoi(number_list[i])));
 		i++;
 	}
 	free_getnumber(number_list);

@@ -16,14 +16,14 @@ void	atob_utils(t_pocket *pocket, int *pivot, int *i, int *j)
 {
 	while (pivot[2] >= 1)
 	{
-		if (pocket -> A -> start -> index > pivot[1])
+		if (pocket -> a -> start -> index > pivot[1])
 		{
 			ft_rotate(pocket, 1);
 			(*j)++;
 		}
 		else
 		{
-			if (pocket -> A -> start -> index <= pivot[0])
+			if (pocket -> a -> start -> index <= pivot[0])
 				ft_push(pocket, 2);
 			else
 			{
@@ -50,7 +50,7 @@ void	atob(t_pocket *pocket, int start, int end)
 		atob_small_sort(pocket, start, end);
 		return ;
 	}
-	if (pivot[2] == pocket -> A -> size && pivot[2] <= 5)
+	if (pivot[2] == pocket -> a -> size && pivot[2] <= 5)
 	{
 		small_sort(pocket, start, end);
 		return ;
@@ -69,14 +69,14 @@ void	btoa_utils(t_pocket *pocket, int *pivot, int *i, int *j)
 {
 	while (pivot[2] >= 1)
 	{
-		if (pocket -> B -> start -> index <= pivot[0])
+		if (pocket -> b -> start -> index <= pivot[0])
 		{
 			ft_rotate(pocket, 2);
 			(*j)++;
 		}
 		else
 		{
-			if (pocket -> B -> start -> index > pivot[1])
+			if (pocket -> b -> start -> index > pivot[1])
 				ft_push(pocket, 1);
 			else
 			{
