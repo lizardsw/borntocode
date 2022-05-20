@@ -15,16 +15,17 @@
 int	check_number(char *str)
 {
 	int		i;
-	int		sign;
+	int		j;
 	int		temp;
 
 	i = 0;
-	sign = 1;
+	j = 0;
 	if (str[i] == '+' || str[i] == '-')
-	{	
-		if (str[i] == '-')
-			sign = -1;
 		i++;
+	while (str[i] == '0')
+	{
+		i++;
+		j++;
 	}
 	while (str[i] != '\0')
 	{
@@ -33,7 +34,7 @@ int	check_number(char *str)
 		i++;
 	}
 	temp = ft_atoi(str);
-	if (i > 9 && (temp == 0 || temp == -1))
+	if (i - j > 9 && (temp == 0 || temp == -1))
 		return (-1);
 	return (1);
 }
