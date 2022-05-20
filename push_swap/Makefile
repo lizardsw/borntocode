@@ -29,7 +29,6 @@ all : $(NAME)
 	$(CC) $(CFLAGS) -c $^
 
 $(NAME) : $(OBJECTS) $(LIBPRT)
-	echo $(OBJECTS)
 	gcc -o $(NAME) $(OBJECTS) $(LIBPRT)
 
 clean :
@@ -41,3 +40,5 @@ fclean :
 	$(RM) $(NAME) $(OBJECTS)
 
 re : fclean all
+
+.PHONY : all re fclean clean

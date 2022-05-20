@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 	sort_index_deq(a);
 	atob(pocket, 1, a -> size);
 	rule_show_deq(rule);
+	
 	//system("leaks push_swap > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	return (0);
 }
