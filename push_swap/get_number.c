@@ -15,7 +15,6 @@
 int	check_number(char *str)
 {
 	int		i;
-	int		j;
 	int		sign;
 	int		temp;
 
@@ -47,8 +46,6 @@ char	*total_str(char **argv, int argc)
 
 	i = 1;
 	new = "";
-	if (new == NULL)
-		return (NULL);
 	while (i < argc)
 	{
 		temp = ft_strjoin(new, " ");
@@ -65,8 +62,6 @@ char	*total_str(char **argv, int argc)
 
 int	check_num_repeat(t_deq *A)
 {
-	int		i;
-	int		j;
 	t_node	*ptr;
 	t_node	*ptr2;
 
@@ -98,11 +93,10 @@ void	free_getnumber(char **new_str)
 	free(new_str);
 }
 
-int	get_number(char **argv, int argc, t_deq *A, char *str)
+int	get_number(t_deq *A, char *str)
 {
 	char	**number_list;
 	int		i;
-	int		number;
 	int		check;
 
 	i = 0;

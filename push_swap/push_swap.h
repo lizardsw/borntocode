@@ -42,7 +42,7 @@ typedef struct s_pocket
 int			check_number(char *str);
 int			check_num_repeat(t_deq *A);
 char		*total_str(char **argv, int argc);
-int			get_number(char **argv, int argc, t_deq *A, char *str);
+int			get_number(t_deq *A, char *str);
 void		free_getnumber(char **new_str);
 t_pocket	*new_pocket(t_deq *A, t_deq *B, t_deq *rule);
 t_deq		*new_deq(void);
@@ -75,7 +75,7 @@ void		setting_pivot(int start, int end, int *pivot);
 void		atob_small_sort(t_pocket *pocket, int start, int end);
 void		btoa_small_sort(t_pocket *pocket, int start, int end);
 void		small_sort(t_pocket *pocket, int start, int end);
-void		b_two_sort(t_pocket *pocket, int start, int end);
+void		b_two_sort(t_pocket *pocket, int start);
 void		three_sort(t_pocket *pocket, int start, int end);
 void		four_sort(t_pocket *pocket, int start, int end);
 void		five_sort(t_pocket *pocket, int start, int end);

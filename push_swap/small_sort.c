@@ -25,7 +25,7 @@ void	small_sort(t_pocket *pocket, int start, int end)
 		five_sort(pocket, start, end);
 }
 
-void	b_two_sort(t_pocket *pocket, int start, int end)
+void	b_two_sort(t_pocket *pocket, int start)
 {
 	if (pocket -> b -> start -> index == start)
 		ft_swap(pocket, 2);
@@ -84,7 +84,6 @@ void	four_sort(t_pocket *pocket, int start, int end)
 
 void	five_sort(t_pocket *pocket, int start, int end)
 {
-	t_node	*ptr;
 	int		count;
 
 	count = 2;
@@ -99,7 +98,7 @@ void	five_sort(t_pocket *pocket, int start, int end)
 			ft_rotate(pocket, 1);
 	}
 	three_sort(pocket, start + 2, end);
-	b_two_sort(pocket, start, start + 1);
+	b_two_sort(pocket, start);
 	ft_push(pocket, 1);
 	ft_push(pocket, 1);
 }

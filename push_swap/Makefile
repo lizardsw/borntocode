@@ -3,10 +3,25 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 make = make
 NAME = push_swap
-LIBPRT = libftprintf.a
+LIBPRT = ./prtf/libftprintf.a
+LIBPRT_DIR = ./prtf
 
-SOURCES = $(wildcard *.c)
-OBJECTS = $(SOURCES: .c = .o)
+SOURCES = get_number.c\
+	linkedlist.c\
+	list_for_rule.c\
+	list_push_pop.c\
+	main.c\
+	pivot_utils.c\
+	pivot.c\
+	push_rules_utils.c\
+	push_rules.c\
+	small_sort.c\
+	sort_list.c
+
+OBJECTS = $(SOURCES:.c=.o)
+
+$(LIBPRT) : 
+	$(make) -C $(LIBPRT_DIR) all
 
 all : $(NAME)
 
@@ -14,7 +29,15 @@ all : $(NAME)
 	$(CC) $(CFLAGS) -c $^
 
 $(NAME) : $(OBJECTS) $(LIBPRT)
+	echo $(OBJECTS)
 	gcc -o $(NAME) $(OBJECTS) $(LIBPRT)
 
 clean :
-	rm *.o
+	$(make) -C $(LIBPRT_DIR) clean
+	$(RM) $(OBJECTS)
+
+fclean :
+	$(make) -C $(LIBPRT_DIR) fclean
+	$(RM) $(NAME) $(OBJECTS)
+
+re : fclean all
