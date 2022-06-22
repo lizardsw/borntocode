@@ -1,21 +1,26 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "./minilibx_opengl_20191021/mlx.h"
+#include "./mlx/mlx.h"
 #include "./gnl/get_next_line.h"
 #include "fcntl.h"
 #include "stdio.h"
 
 typedef struct s_node
 {
-	char	*map_char;
-	struct s_node *next;
+	char			*map_str;
+	struct s_node 	*next;
 }	t_node;
 
 typedef struct s_map
 {
 	t_node	*start;
-	int size;
+	t_node	*end;
+	int		x_size;
+	int		size;
+	int		player;
+	int		close;
+	int		gift;
 }	t_map;
 
 // liblist.c
@@ -25,5 +30,6 @@ void	add_node(t_map *map, t_node *node);
 
 // get_map.c
 t_map	*make_map(void);
+void	show_map(t_map *map);
 
 #endif 

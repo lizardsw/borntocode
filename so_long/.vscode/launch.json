@@ -7,11 +7,10 @@
 		{
 			"type": "lldb",
 			"request": "launch",
-			"name": "C/C++: clang build active file",
-			"program": "${fileDirname}/${fileBasenameNoExtension}",
+			"name": "Debug",
+			"program": "${workspaceFolder}/a.out",
 			"args": [],
-			"cwd": "${workspaceFolder}",
-			"preLaunchTask": "C/C++: clang build active file"
+			"cwd": "${workspaceFolder}"
 		}
 	]
 }

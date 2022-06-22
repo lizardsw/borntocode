@@ -1,9 +1,9 @@
 NAME = a.out
-CC = gcc
+CC = gcc -g
 RM = rm -f
 make = make
-CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -lz
+CFLAGS = -Wal -Wextra -Werror
+MLXFLAGS = -L./mlx -lmlx -framework OpenGL -framework AppKit -lz
 GNLDIR = ./gnl
 GNL = ./gnl/gnl.a
 

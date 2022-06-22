@@ -17,17 +17,10 @@ int	main(void)
 	void	*mlx;
 	void	*new_window;
 	t_map	*map;
-	t_node	*ptr;
 
 	mlx = mlx_init();
 	new_window = mlx_new_window(mlx, 800, 800, "hello!");
-
 	map = make_map();
-	ptr = map -> start;
-	while(ptr != NULL)
-	{ 
-		printf("%s", ptr -> map_char);
-		ptr = ptr -> next;
-	}
+	show_map(map);
 	return (0);
 }
