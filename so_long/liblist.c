@@ -23,10 +23,11 @@ t_map	*new_map(void)
 		return (NULL);
 	new_map -> start = NULL;
 	new_map -> x_size = 0;
-	new_map -> size = 0;
+	new_map -> y_size = 0;
 	new_map -> player = 0;
-	new_map -> close = 0;
-	new_map -> gift = 0;
+	new_map -> item = 0;
+	new_map -> exit = 0;
+	new_map -> trash = 0;
 	return (new_map);
 }
 
@@ -34,7 +35,7 @@ void	add_node(t_map *map, t_node *node)
 {
 	t_node	*ptr;
 
-	map -> size++;
+	map -> y_size++;
 	if (map -> start == NULL)
 	{
 		map -> start = node;
