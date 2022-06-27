@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:29:40 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/24 20:34:25 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:38:21 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	main(int argc, char **argv)
 {
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
+		printf("wrong-arg!\n");
 		printf("error!\n");
 		return (0);
 	}

@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:25 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 09:27:08 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:18:10 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../include_bonus/so_long_bonus.h"
 
 void	ft_strtrim(char *str)
 {

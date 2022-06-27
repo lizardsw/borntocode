@@ -6,11 +6,18 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:22 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/24 20:25:55 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:31:27 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
+
+int	x_button(t_display *display)
+{
+	mlx_destroy_window(display->mlx, display->win);
+	printf("x_button!\n");
+	exit(0);
+}
 
 int	key_hook(int keycode, t_display *param)
 {
@@ -24,8 +31,10 @@ int	key_hook(int keycode, t_display *param)
 	else if (keycode == KEY_D)
 		right_game(param);
 	else if (keycode == KEY_ESC)
+	{
+		printf("ESC_button!\n");
 		exit(0);
-	printf("x: %d y: %d\n", param -> x, param -> y);
+	}
 	display_map(param -> map, param);
 	return (0);
 }
@@ -33,4 +42,5 @@ int	key_hook(int keycode, t_display *param)
 void	event_manage(void *window_ptr, t_display *display)
 {
 	mlx_key_hook(window_ptr, &key_hook, display);
+	mlx_hook(window_ptr, X_EVENT, 0, &x_button, display);
 }

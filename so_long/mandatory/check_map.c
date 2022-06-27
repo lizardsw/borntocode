@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:16 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/24 20:21:07 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:30:07 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	check_wall_top_bottom(char	*str)
 {
@@ -70,7 +70,7 @@ int	check_num(t_map *map)
 	{
 		if (node_ptr -> map_str == NULL)
 			return (-1);
-		if (ft_strlen(node_ptr -> map_str) != map -> x_size)
+		if ((int)ft_strlen(node_ptr -> map_str) != map -> x_size)
 			return (-1);
 		node_ptr = node_ptr -> next;
 	}

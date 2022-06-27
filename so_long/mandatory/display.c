@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:08:56 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 11:23:33 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:05:10 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 t_display	*init_image(t_map *map, int x, int y)
 {

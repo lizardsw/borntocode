@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:25 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/24 20:31:55 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:49:12 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void	ft_strtrim(char *str)
 {
@@ -74,13 +74,12 @@ t_map	*make_map(char *map_dir)
 	}
 	map = new_map();
 	one_line = get_next_line(fd);
-	ft_strtrim(one_line);
 	while (one_line != NULL)
 	{
 		add_node(map, new_node(one_line));
+		ft_strtrim(map->end->map_str);
 		free(one_line);
 		one_line = get_next_line(fd);
-		ft_strtrim(one_line);
 	}
 	set_map_info(map);
 	return (map);

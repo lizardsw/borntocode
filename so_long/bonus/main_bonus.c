@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:29:40 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 11:30:11 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:17:47 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../include_bonus/so_long_bonus.h"
 
 int	main(int argc, char **argv)
 {
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		printf("error!\n");
+		printf("arg error!\n");
 		return (0);
 	}
 	map = make_map(argv[1]);

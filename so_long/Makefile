@@ -6,7 +6,7 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/24 20:09:40 by seongwch          #+#    #+#              #
-#    Updated: 2022/06/27 11:29:52 by seongwch         ###   ########.fr        #
+#    Updated: 2022/06/27 21:39:41 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME_BONUS = so_long_bonus
 CC = gcc -g
 RM = rm -f
 make = make
-CFLAGS = -Wal -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -L./mlx -lmlx -framework OpenGL -framework AppKit -lz
 GNLDIR = ./gnl
 GNL = ./gnl/gnl.a
@@ -36,7 +36,7 @@ OBJECTS = $(SOURCES:.c=.o)
 OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
 %.o : %.c
-	$(CC) -o $@ -c $^
+	$(CC) $(CFLAGS) -o $@ -c $^
 
 all : $(NAME)
 
@@ -59,6 +59,9 @@ fclean :
 	$(RM) $(OBJECTS) $(NAME)
 	$(RM) $(OBJECTS_BONUS) $(NAME_BONUS)
 
+re :
+	$(make) fclean
+	$(make) all
 
 bonus : $(NAME_BONUS)
 

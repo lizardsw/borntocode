@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:30 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/24 20:33:35 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:58:51 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void	free_map(t_map *map)
 {

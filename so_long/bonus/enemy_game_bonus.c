@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:25:07 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 11:26:29 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:17:57 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../include_bonus/so_long_bonus.h"
 
 void	make_a_b(t_display *display, int *a, int *b)
 {

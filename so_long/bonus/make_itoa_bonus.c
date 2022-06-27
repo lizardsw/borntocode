@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:28:29 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 11:28:30 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:18:27 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../include_bonus/so_long_bonus.h"
 
 size_t	make_size(int n)
 {

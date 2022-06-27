@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:08:56 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 11:24:48 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 21:11:47 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../include_bonus/so_long_bonus.h"
 
 t_display	*init_image(t_map *map, int x, int y)
 {
@@ -50,6 +50,7 @@ void	display_string(t_display *display)
 	str = ft_itoa(display->count);
 	display_block(display->mlx, display->win, display->grass, ptr);
 	mlx_string_put(display->mlx, display->win, 8, 20, 0x000000, str);
+	free(str);
 }
 
 void	display_map(t_map *map, t_display *display)

@@ -6,11 +6,11 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:27:15 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 11:27:43 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:29:22 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../include_bonus/so_long_bonus.h"
 
 int	enemy_check(t_map *map, int land_size, int i, int j)
 {
@@ -57,7 +57,6 @@ void	enemy_locate(t_map *map, t_display *display, int land_size)
 void	input_enemey(t_map *map, t_display *display)
 {
 	int	land_size;
-	int	ptr[2];
 
 	land_size = (map->x_size) * (map->y_size);
 	land_size -= (map->item + map->rock + 2);
