@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:05 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/24 23:27:21 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:43:23 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_display
 	void	*rock;
 	void	*door;
 	void	*enemy;
+	void	*grass;
 }	t_display;
 
 // evet_manage.c
@@ -67,5 +68,12 @@ int		enemy_check(t_map *map, int land_size, int i, int j);
 // enemy_move.c
 void	make_a_b(t_display *display, int *a, int *b);
 void	enemy_move(t_display *display);
+
+// make_itoa.c
+size_t	make_size(int n);
+void	fill_char(char *str, int n, size_t size);
+char	*ft_itoa(int n);
+
+
 
 #endif 

@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:08:56 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/24 22:52:50 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:44:33 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_display	*init_image(t_map *map, int x, int y)
 	scr->rock = mlx_xpm_file_to_image(scr->mlx, "xpm/rock.xpm", &imgx, &imgy);
 	scr->door = mlx_xpm_file_to_image(scr->mlx, "xpm/exit.xpm", &imgx, &imgy);
 	scr->enemy = mlx_xpm_file_to_image(scr->mlx, "xpm/enemy.xpm", &imgx, &imgy);
+	scr->grass = mlx_xpm_file_to_image(scr->mlx, "xpm/count.xpm", &imgx, &imgy);
 	scr->x = map->locate[0];
 	scr->y = map->locate[1];
 	scr->map = map;
@@ -39,10 +40,25 @@ t_display	*init_image(t_map *map, int x, int y)
 	return (scr);
 }
 
+void	display_string(t_display *display)
+{
+	char	*str;
+	int		ptr[2];
+
+	
+	ptr[0] = 0;
+	ptr[1] = 0;
+	str = ft_itoa(display->count);
+	display_block(display->mlx, display->win, display->grass, ptr);
+	mlx_string_put(display->mlx, display->win, 8, 20, 0x000000, str);
+}
+
+
 void	display_map(t_map *map, t_display *display)
 {
 	display_land(display, map -> x_size, map -> y_size);
 	display_struct(display, map);
 	display_frog(display);
 	display_enemy(display);
+	display_string(display);
 }

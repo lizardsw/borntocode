@@ -7,7 +7,7 @@ void	make_a_b(t_display *display, int *a, int *b)
 	*a = 0;
 	*b = 0;
 	number = display->enemy_x * display->count;
-	number += display->count + display->x;
+	number += display->count + display->x + display->y;
 	number = number % 5;
 	if (number == 0)
 		*a = 1;
@@ -29,7 +29,6 @@ void	enemy_move(t_display *display)
 	map = display -> map;
 	make_a_b(display, &a, &b);
 	ptr = ptr_map_char(map, display->enemy_x + a, display->enemy_y + b);
-	display -> count++;
 	if (*(ptr) == '0')
 	{
 		display->enemy_x += a;
