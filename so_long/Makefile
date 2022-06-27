@@ -6,7 +6,7 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/24 20:09:40 by seongwch          #+#    #+#              #
-#    Updated: 2022/06/27 21:39:41 by seongwch         ###   ########.fr        #
+#    Updated: 2022/06/27 22:33:42 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,8 @@ re :
 	$(make) all
 
 bonus : $(NAME_BONUS)
+
+.PHONY : all bonus re fclean clean
 
 $(NAME_BONUS) : $(GNL) $(MLX) $(OBJECTS_BONUS)
 	$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME_BONUS) $(OBJECTS_BONUS) $(GNL)

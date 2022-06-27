@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:16 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 20:27:29 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 22:10:50 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	check_num(t_map *map)
 	t_node	*node_ptr;
 
 	node_ptr = map -> start;
-	if (map -> player != 1 || map -> exit != 1)
+	if (map -> player != 1 || map -> exit != 1 || map->item < 1)
 		return (-1);
 	if (map -> trash > 0)
 		return (-1);

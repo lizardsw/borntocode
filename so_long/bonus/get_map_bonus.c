@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:25 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 19:18:10 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 22:19:44 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ t_map	*make_map(char *map_dir)
 	}
 	map = new_map();
 	one_line = get_next_line(fd);
-	ft_strtrim(one_line);
 	while (one_line != NULL)
 	{
 		add_node(map, new_node(one_line));
+		ft_strtrim(map->end->map_str);
 		free(one_line);
 		one_line = get_next_line(fd);
-		ft_strtrim(one_line);
 	}
 	set_map_info(map);
+	close(fd);
 	return (map);
 }

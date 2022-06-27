@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 20:09:47 by seongwch          #+#    #+#             */
-/*   Updated: 2022/06/27 19:09:38 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/06/27 22:31:23 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include "get_map.h"
 # include "show_display.h"
 
