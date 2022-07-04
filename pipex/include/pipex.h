@@ -3,8 +3,10 @@
 
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "../prtf/ft_printf.h"
-#include "fcntl.h"
+#include <fcntl.h>
+#include <sys/wait.h>
 
 typedef struct s_cmdline
 {

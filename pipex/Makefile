@@ -6,7 +6,7 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/24 20:09:40 by seongwch          #+#    #+#              #
-#    Updated: 2022/07/02 16:15:28 by seongwch         ###   ########.fr        #
+#    Updated: 2022/07/04 14:20:23 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ LIBPRTF = ./prtf/libftprintf.a
 SOURCE_DIR = ./src/
 SOURCE_BONUS_DIR = ./bonus/
 
-SOURCE_NAME = main.c check_file.c *.c
+SOURCE_NAME = *.c
 
-SOURCES = $(addprefix $(SOURCE_DIR), $(SOURCE_NAME))
+SOURCES = $(wildcard $(addprefix $(SOURCE_DIR), $(SOURCE_NAME)))
 SOURCES_BONUS = $(addprefix $(SOURCE_BONUS_DIR), $(SOURCE_BONUS_NAME))
 
 
