@@ -6,25 +6,26 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/24 20:09:40 by seongwch          #+#    #+#              #
-#    Updated: 2022/07/01 18:15:59 by seongwch         ###   ########.fr        #
+#    Updated: 2022/07/02 16:15:28 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
-NAME_BONUS = pipex
+NAME_BONUS = pipex_bonus
 CC = gcc -g
 RM = rm -f
 make = make
 CFLAGS = -Wall -Wextra -Werror
 LIBPRTFDIR = ./prtf/
-LIBPRTF = ./prtf/libfprintf.a
+LIBPRTF = ./prtf/libftprintf.a
 SOURCE_DIR = ./src/
 SOURCE_BONUS_DIR = ./bonus/
 
-SOURCE_NAME = *.c
+SOURCE_NAME = main.c check_file.c *.c
 
 SOURCES = $(addprefix $(SOURCE_DIR), $(SOURCE_NAME))
 SOURCES_BONUS = $(addprefix $(SOURCE_BONUS_DIR), $(SOURCE_BONUS_NAME))
+
 
 OBJECTS = $(SOURCES:.c=.o)
 OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
