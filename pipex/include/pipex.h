@@ -10,8 +10,8 @@
 
 typedef struct s_cmdline
 {
-	char	*file1;
-	char	*file2;
+	int		file1_fd;
+	int		file2_fd;
 	char	**cmd;
 }	t_cmdline;
 
