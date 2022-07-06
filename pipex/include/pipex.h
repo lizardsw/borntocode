@@ -8,17 +8,23 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 
-typedef struct s_cmdline
+#define STDIN 0
+#define STDOUT 1
+
+typedef struct s_info
 {
 	int		file1_fd;
 	int		file2_fd;
 	char	**cmd;
-}	t_cmdline;
+}	t_info;
 
-void	open_file(t_cmdline *cmdline, int argc, char **argv, int *fd);
-void	error_exit(char *str);
-char	**get_path(char **envp);
-int		parsing_cmd(t_cmdline *cmdline, int argc, char **argv, char **envp);
+void	ft_error(char	*str);
 
+char	*get_path(char *cmd, char **envp);
+char	*join_path(char *cmd, char **path);
+char	**get_option(char *cmd);
+
+void	child_setting(int *pipe_fd, t_info info);
+void	parent_setting(int *pipe_fd, t_info info);
 
 #endif
