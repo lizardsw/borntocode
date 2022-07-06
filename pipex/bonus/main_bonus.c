@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:30:23 by seongwch          #+#    #+#             */
-/*   Updated: 2022/07/06 21:31:33 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/07/06 21:54:30 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,15 @@ int main(int argc, char **argv, char **envp)
 	int		i;
 	int	pipeA[2];
 	int pipeB[2];
+	char buff[100];
 	
 	i = 0;
+	int k;
 	if (1)
 	{
 		// init_pipe(&info);
+		pipe(pipeA);
+		pipe(pipeB);
 		while (i < 3)
 		{
 			pid = fork();
@@ -62,14 +66,17 @@ int main(int argc, char **argv, char **envp)
 				ft_error("fork - error", 1);
 			if (pid == 0)
 			{
-				if (i != 0)
+				dup2(pipeB[PIPIN], STDIN);
+				dup2(pipeA[PIPOUT], STDOUT);
+				write(STDOUT, "hi", 3);
 				return 0;
 			}
 			else
 			{
-				printf("부모 프로세스 pid : %d\n", pid);
-				printf("부모!\n");
-				waitpid(pid, NULL, WUNTRACED);
+				dup2(pipA[PIPIN], STDIN);
+				wait(NULL);
+				k = read(STDIN, buff, 100);
+				buff[k + 1] = '\0';
 				printf("-------------------\n");
 			}
 			i++;

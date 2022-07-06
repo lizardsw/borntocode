@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:29:45 by seongwch          #+#    #+#             */
-/*   Updated: 2022/07/06 21:22:39 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/07/06 21:46:09 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 #define STDOUT 1
 #define STDIN 0
+#define PIPIN 0
+#define PIPOUT 1
 
 typedef struct s_info
 {
