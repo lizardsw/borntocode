@@ -6,7 +6,7 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/24 20:09:40 by seongwch          #+#    #+#              #
-#    Updated: 2022/07/07 09:51:02 by seongwch         ###   ########.fr        #
+#    Updated: 2022/07/07 10:18:11 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ CFLAGS = -Wall -Wextra -Werror
 LIBPRTFDIR = ./prtf/
 LIBPRTF = ./prtf/libftprintf.a
 SOURCE_DIR = ./src/
-SOURCE_BONUS_DIR = ./bonus/
 
 SOURCE_NAME = main.c \
 				parsing.c \
@@ -51,7 +50,5 @@ re :
 	$(make) fclean
 	$(make) all
 
-bonus : $(NAME_BONUS)
-
-.PHONY : all bonus re fclean clean
+.PHONY : all re fclean clean
 	
