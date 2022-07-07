@@ -6,13 +6,12 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/24 20:09:40 by seongwch          #+#    #+#              #
-#    Updated: 2022/07/04 14:20:23 by seongwch         ###   ########.fr        #
+#    Updated: 2022/07/07 09:51:02 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
-NAME_BONUS = pipex_bonus
-CC = gcc -g
+CC = gcc
 RM = rm -f
 make = make
 CFLAGS = -Wall -Wextra -Werror
@@ -21,14 +20,13 @@ LIBPRTF = ./prtf/libftprintf.a
 SOURCE_DIR = ./src/
 SOURCE_BONUS_DIR = ./bonus/
 
-SOURCE_NAME = *.c
+SOURCE_NAME = main.c \
+				parsing.c \
+				pipe.c
 
-SOURCES = $(wildcard $(addprefix $(SOURCE_DIR), $(SOURCE_NAME)))
-SOURCES_BONUS = $(addprefix $(SOURCE_BONUS_DIR), $(SOURCE_BONUS_NAME))
-
+SOURCES = $(addprefix $(SOURCE_DIR), $(SOURCE_NAME))
 
 OBJECTS = $(SOURCES:.c=.o)
-OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -o $@ -c $^
@@ -43,12 +41,11 @@ $(NAME) : $(LIBPRTF) $(OBJECTS)
 
 clean :
 	$(make) -C $(LIBPRTFDIR) clean
-	$(RM) $(OBJECTS) $(OBJECTS_BONUS)
+	$(RM) $(OBJECTS)
 
 fclean :
 	$(make) -C $(LIBPRTFDIR) fclean
 	$(RM) $(OBJECTS) $(NAME)
-	$(RM) $(OBJECTS_BONUS) $(NAME_BONUS)
 
 re :
 	$(make) fclean
