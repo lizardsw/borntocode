@@ -1,0 +1,16 @@
+total 160
+drwxr-xr-x  15 seongwch  2021_seoul    510  7 18 17:58 .
+drwxr-xr-x  12 seongwch  2021_seoul    408  7 14 21:35 ..
+drwxr-xr-x   3 seongwch  2021_seoul    102  7 18 16:08 .vscode
+-rwxr-xr-x   1 seongwch  2021_seoul  49968  7 18 13:07 a.out
+-rw-r--r--   1 seongwch  2021_seoul    229  7 15 17:49 getpwd.c
+-rw-r--r--   1 seongwch  2021_seoul      0  7 18 17:58 hi.tct
+-rw-r--r--   1 seongwch  2021_seoul    113  7 18 17:58 hi.txt
+drwxr-xr-x  49 seongwch  2021_seoul   1666  7 18 16:02 libft
+-rw-r--r--   1 seongwch  2021_seoul     17  7 18 16:42 out.txt
+-rw-r--r--   1 seongwch  2021_seoul    904  7 15 16:38 readline.c
+drwxr-xr-x   7 seongwch  2021_seoul    238  7 18 16:14 structure
+-rw-r--r--   1 seongwch  2021_seoul    356  7 15 15:15 test.c
+-rw-r--r--   1 seongwch  2021_seoul    113  7 18 11:45 tree.c
+-rw-r--r--   1 seongwch  2021_seoul    191  7 18 11:44 tree.h
+-rw-r--r--   1 seongwch  2021_seoul      0  7 18 18:17 z.txt

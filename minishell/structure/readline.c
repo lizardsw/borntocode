@@ -6,9 +6,9 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <unistd.h>
+#include "list.h"
 
-
-// gcc -lreadline -L ~/goinfre/.brew/opt/readline/lib -I ~/goinfre/.brew/opt/readline/include realine.c
+// gcc -lreadline -L ~/goinfre/.brew/opt/readline/lib -I ~/goinfre/.brew/opt/readline/include readline.c
 // 위에 명령어를 통해 함수를 사용할 수 있다!!
 void	handler(int signum)
 {
@@ -28,6 +28,7 @@ int		main(void)
 {
 	int				ret;
 	char			*line;
+	t_list			*list;
 
 	signal(SIGINT, handler);
 	while (true)
@@ -39,6 +40,8 @@ int		main(void)
 			if (ret)
 				printf("output> %s\n", line);
 			add_history(line);
+			list = shell_split(line);
+			show_list(list);
 			free(line);
 			line = NULL;
 			if (!ret)
