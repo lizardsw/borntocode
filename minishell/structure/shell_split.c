@@ -28,23 +28,23 @@ int	check_chr(char c)
 	else if (c == '\'' || c == '\"')
 		return (QUOTE);
 	else if (c == '|' || c == ';')
-		return (PIPE);
+		return (PIP);
 	else if (c == '\0')
 		return (ZERO);
-	return (CHAR);
+	return (WORD);
 }
 
-int	push_token(t_list *list, char *str, int index, int len)
+int	push_syntax(t_list *list, char *str, int index, int len)
 {
 	char	*temp;
 
 	temp = get_strdup(&str[index], len);
-	push_node_back(list, new_node(temp));
+	push_node_back(list, new_node(temp, check_chr(str[index])));
 	free(temp);
 	return (len);
 }
 
-int	check_token(t_list *split_list, char *str)
+int	label_group(t_list *split_list, char *str)
 {
 	int		i;
 	int		add_index;
@@ -52,14 +52,17 @@ int	check_token(t_list *split_list, char *str)
 
 	i = 0;
 	add_index = 0;
-	if (check_chr(str[0]) == PIPE)
-		add_index = push_token(split_list, str, 0, 1);
+	if (check_chr(str[0]) == PIP)
+	{
+		add_index = push_syntax(split_list, str, 0, 1);
+		split_list->pipe_num++;
+	}
 	else if (check_chr(str[0]) == REDIR)
 	{
 		if (str[0] == str[1])
-			add_index = push_token(split_list, str, 0, 2);
+			add_index = push_syntax(split_list, str, 0, 2);
 		else
-			add_index = push_token(split_list, str, 0, 1);
+			add_index = push_syntax(split_list, str, 0, 1);
 	}
 	else if (check_chr(str[0]) == QUOTE)
 	{
@@ -68,7 +71,7 @@ int	check_token(t_list *split_list, char *str)
 			i++;
 		if (str[i] == '\0')
 			exit(1);
-		add_index = push_token(split_list, str, 1, i - 1) + 2;
+		add_index = push_syntax(split_list, str, 1, i - 1) + 2;
 	}
 	else if (check_chr(str[0]) == SPACES)
 	{
@@ -95,8 +98,8 @@ t_list *shell_split(char *str)
 		while (!check_chr(str[i + j])) // 명령어 녀석들 아니면 세주는거야!! 쫄지마
 			j++;
 		if (j != 0)
-			push_token(split_list, str, i, j);
-		j += check_token(split_list, &str[i + j]);
+			push_syntax(split_list, str, i, j);
+		j += label_group(split_list, &str[i + j]);
 		i = i + j;
 	}
 	return (split_list);

@@ -4,14 +4,15 @@ void	show_list(t_list *list)
 {
 	t_node	*ptr;
 
-	printf("-------------------\n");
+	// printf("-------------------\n");
 	ptr = list->start;
 	while (ptr != NULL)
 	{
-		printf("%s\n", ptr->data);
+		printf("[%s (%d)] ", ptr->data, ptr->token);
 		ptr = ptr->next;
 	}
-	printf("-------------------\n");
+	printf("\n");
+	// printf("\n-------------------\n");
 }
 
 t_list *new_list(void)
@@ -24,10 +25,11 @@ t_list *new_list(void)
 	new->start = NULL;
 	new->end = NULL;
 	new->number = 0;
+	new->pipe_num = 0;
 	return (new);
 }
 
-t_node *new_node(char *str)
+t_node *new_node(char *str, int token)
 {
 	t_node *new;
 
@@ -36,6 +38,7 @@ t_node *new_node(char *str)
 		exit(1);
 	new->next = NULL;
 	new->prev = NULL;
+	new->token = token;
 	new->data = ft_strdup(str);
 	return (new);
 }
