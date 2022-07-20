@@ -47,10 +47,21 @@ int		main(void)
 			{
 				storage = cmd_storage(list);
 				show_process(storage);
+				if (syntax_error(storage) == -1)
+				{
+					printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+					printf("$$$$$$$syntax_error!$$$$$$$$$$\n");
+					printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+				}
 				free_process(storage);
 			}
 			else if(list->state == ERROR)
-				printf("error!\n");
+			{
+				printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+				printf("@@@@@@@@@@ QUOTE error!@@@@@@@@@@\n");
+				printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+
+			}
 			free_list(list);
 			free(line);
 			line = NULL;

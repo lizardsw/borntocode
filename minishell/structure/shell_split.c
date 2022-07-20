@@ -106,6 +106,8 @@ t_list *shell_split(char *str)
 		check = label_group(split_list, &str[i + j]);
 		j += check;
 		i = i + j;
+		if (i > ft_strlen(str))
+			break;
 	}
 	return (split_list);
 }

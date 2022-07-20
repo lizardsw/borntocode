@@ -85,5 +85,6 @@ void	free_node(t_node *ptr);
 void	free_list(t_list *list);
 void	free_process(t_process **prc);
 
+int syntax_error(t_process **parsing);
 
 #endif

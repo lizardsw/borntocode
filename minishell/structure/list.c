@@ -42,6 +42,8 @@ t_node *new_node(char *str)
 	new->next = NULL;
 	new->prev = NULL;
 	new->data = ft_strdup(str);
+	new->token = -1;
+	new->group = -1;
 	return (new);
 }
 

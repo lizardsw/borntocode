@@ -10,20 +10,23 @@ void	show_process(t_process **ptr)
 
 	i = 0;
 	j = 0;
+	printf("~~~~~~~~~~~~~~~~~~~\n");
+	printf("-------------------\n");
 	while (ptr[i] != NULL)
 	{
 		j = 0;
 		redir = ptr[i]->redir;
 		cmd = ptr[i]->cmd;
-		printf("-------------------\n");
 		printf("process : token(%d) index(%d)\n", ptr[i]->token, ptr[i]->index);
-		printf("redir : %d\n", redir->number);
+		printf("*redir : %d\n", redir->number);
 		show_list(redir);
-		printf("cmd : %d\n", cmd->number);
+		printf("*cmd : %d\n", cmd->number);
 		show_list(cmd);
 		printf("-------------------\n");
 		i++;
 	}
+	printf("~~~~~~~~~~~~~~~~~~~\n");
+
 }
 
 t_process *new_process(void)
