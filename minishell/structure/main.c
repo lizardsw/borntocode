@@ -3,6 +3,7 @@
 int main()
 {
 	t_list *my;
+	t_list *hi;
 	t_process **mine;
 	
 	// my = shell_split("hi    <<     name");
@@ -26,6 +27,7 @@ int main()
 	// free_process(mine);
 	mine = cmd_storage(my);
 	show_process(mine);
+
 
 	system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	return 0;

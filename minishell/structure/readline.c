@@ -29,6 +29,7 @@ int		main(void)
 	int				ret;
 	char			*line;
 	t_list			*list;
+	t_process		**storage;
 
 	signal(SIGINT, handler);
 	while (true)
@@ -42,6 +43,15 @@ int		main(void)
 			add_history(line);
 			list = shell_split(line);
 			show_list(list);
+			if (list->state == GOOD)
+			{
+				storage = cmd_storage(list);
+				show_process(storage);
+				free_process(storage);
+			}
+			else if(list->state == ERROR)
+				printf("error!\n");
+			free_list(list);
 			free(line);
 			line = NULL;
 			if (!ret)

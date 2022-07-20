@@ -19,7 +19,7 @@ char	*get_strdup(char *src, int number)
 	return (new);
 }
 
-int	check_chr(char c)
+int	check_group(char c)
 {
 	if (c == ' ')
 		return (SPACES);
@@ -27,7 +27,7 @@ int	check_chr(char c)
 		return (REDIR);
 	else if (c == '\'' || c == '\"')
 		return (QUOTE);
-	else if (c == '|' || c == ';')
+	else if (c == '|')
 		return (PIP);
 	else if (c == '\0')
 		return (ZERO);
@@ -36,10 +36,13 @@ int	check_chr(char c)
 
 int	push_syntax(t_list *list, char *str, int index, int len)
 {
+	t_node	*new;
 	char	*temp;
 
 	temp = get_strdup(&str[index], len);
-	push_node_back(list, new_node(temp, check_chr(str[index])));
+	new = new_node(temp);
+	new->group = check_group(str[0]);
+	push_node_back(list, new);
 	free(temp);
 	return (len);
 }
@@ -52,28 +55,28 @@ int	label_group(t_list *split_list, char *str)
 
 	i = 0;
 	add_index = 0;
-	if (check_chr(str[0]) == PIP)
+	if (check_group(str[0]) == PIP)
 	{
 		add_index = push_syntax(split_list, str, 0, 1);
 		split_list->pipe_num++;
 	}
-	else if (check_chr(str[0]) == REDIR)
+	else if (check_group(str[0]) == REDIR)
 	{
 		if (str[0] == str[1])
 			add_index = push_syntax(split_list, str, 0, 2);
 		else
 			add_index = push_syntax(split_list, str, 0, 1);
 	}
-	else if (check_chr(str[0]) == QUOTE)
+	else if (check_group(str[0]) == QUOTE)
 	{
 		i = 1;
 		while (str[0] != str[i] && str[i] != '\0')
 			i++;
 		if (str[i] == '\0')
-			exit(1);
+			split_list->state = ERROR;
 		add_index = push_syntax(split_list, str, 1, i - 1) + 2;
 	}
-	else if (check_chr(str[0]) == SPACES)
+	else if (check_group(str[0]) == SPACES)
 	{
 		while (str[i] == ' ')
 			i++;
@@ -85,21 +88,23 @@ int	label_group(t_list *split_list, char *str)
 t_list *shell_split(char *str)
 {
 	t_list	*split_list;
-	char	*temp;
-	int		token;
+	int		check;
 	int		i;
 	int		j;
 
 	i = 0;
 	split_list = new_list();
+	if (str[0] == '\0')
+		split_list->state = BLANK;
 	while (str[i] != '\0')
 	{
 		j = 0;
-		while (!check_chr(str[i + j])) // 명령어 녀석들 아니면 세주는거야!! 쫄지마
+		while (!check_group(str[i + j])) // 명령어 녀석들 아니면 세주는거야!! 쫄지마
 			j++;
 		if (j != 0)
-			push_syntax(split_list, str, i, j);
-		j += label_group(split_list, &str[i + j]);
+			push_syntax(split_list, &str[i], 0, j);
+		check = label_group(split_list, &str[i + j]);
+		j += check;
 		i = i + j;
 	}
 	return (split_list);

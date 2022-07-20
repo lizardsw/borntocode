@@ -16,10 +16,10 @@ void	show_process(t_process **ptr)
 		redir = ptr[i]->redir;
 		cmd = ptr[i]->cmd;
 		printf("-------------------\n");
-		printf("process : token(%d)\n", ptr[i]->token);
-		printf("redir\n");
+		printf("process : token(%d) index(%d)\n", ptr[i]->token, ptr[i]->index);
+		printf("redir : %d\n", redir->number);
 		show_list(redir);
-		printf("cmd\n");
+		printf("cmd : %d\n", cmd->number);
 		show_list(cmd);
 		printf("-------------------\n");
 		i++;
@@ -51,6 +51,12 @@ t_process **new_storage(int pipe_num)
 	while (i < pipe_num + 1)
 	{
 		new[i] = new_process();
+		if (i == 0)
+			new[i]->index = START;
+		else if (i == pipe_num)
+			new[i]->index = END;
+		else
+			new[i]->index = MIDDLE;
 		i++;
 	}
 	new[i] = NULL;
@@ -62,7 +68,7 @@ void	label_token(t_node *ptr)
 	char	*temp;
 
 	temp = ptr->data;
-	if (ptr->token == REDIR)
+	if (ptr->group == REDIR)
 	{
 		if (temp[0] == '<')
 		{
@@ -79,14 +85,16 @@ void	label_token(t_node *ptr)
 				ptr->token = RDOUT;
 		}
 	}
-	else if (ptr->token == PIP)
+	else if (ptr->group == PIP)
 	{
 		if (temp[0] == '|')
 			ptr->token = PIPE;
 		else
 			ptr->token = SCOLON;
 	}
-	else if (ptr->token == QUOTE)
+	else if (ptr->group == QUOTE)
+		ptr->token = CMD;
+	else if (ptr->group == WORD)
 		ptr->token = CMD;
 }
 
@@ -97,7 +105,7 @@ void	mv_redir_syn(t_process *prc, t_list *split)
 	ptr = pop_node_front(split);
 	label_token(ptr);
 	push_node_back(prc->redir, ptr);
-	if (split->start->token != PIP && split->start->token != REDIR)
+	if (split->start != NULL && split->start->group != PIP && split->start->group != REDIR)
 	{
 		ptr = pop_node_front(split);
 		label_token(ptr);
@@ -137,11 +145,11 @@ t_process **cmd_storage(t_list *list)
 	storage = new_storage(list->pipe_num);
 	while (ptr != NULL)
 	{
-		if (ptr->token == REDIR)
+		if (ptr->group == REDIR)
 			mv_redir_syn(storage[i], list);
-		else if (ptr->token == WORD | ptr->token == QUOTE)
+		else if (ptr->group == WORD | ptr->group == QUOTE)
 			mv_cmd_syn(storage[i], list);
-		else if (ptr->token == PIP)
+		else if (ptr->group == PIP)
 		{
 			mv_pip_syn(storage[i], list);
 			i++;
