@@ -13,6 +13,15 @@ enum	e_flag
 	SUCCESS
 };
 
+enum	e_action
+{
+	FORK = 0,
+	EAT,
+	SLEEP,
+	THINK,
+	DEAD
+};
+
 enum	e_error
 {
 	NO_ERROR = 0,
@@ -31,8 +40,10 @@ typedef struct s_info
 	int	eating_time;
 	int	sleeping_time;
 	int	full_num;
+	int simul;
 	long long start_time;
 	pthread_mutex_t *fork;
+	pthread_mutex_t print;
 }	t_info;
 
 typedef struct s_philo
@@ -42,7 +53,9 @@ typedef struct s_philo
 	int philo_index;
 	int	left_fork;
 	int	right_fork;
-	long long end_eat_time;
+	int	have_to_eat;
+	long long deadline;
+	pthread_mutex_t die;
 }	t_philo;
 
 // philo_libft.c
@@ -63,4 +76,6 @@ void	show_info(t_info *info);
 int	sit_philo_table(t_philo *philo, t_info *info);
 
 long long get_time(void);
+void	philo_printf(t_philo *philo, t_info *info, int flag);
+
 #endif

@@ -63,6 +63,8 @@ int	init_info(int argc, char **argv, t_info *info)
 	info->eating_time = ft_atoi(argv[3]);
 	info->sleeping_time = ft_atoi(argv[4]);
 	info->fork = NULL;
+	if(pthread_mutex_init(&(info->print), NULL))
+			return (MUTEX_INIT_ERROR);
 	if (argc > 5)
 		info->full_num = ft_atoi(argv[5]);
 	else
