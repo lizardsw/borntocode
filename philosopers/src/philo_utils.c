@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/16 17:15:14 by seongwch          #+#    #+#             */
+/*   Updated: 2022/09/16 22:03:37 by seongwch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosopers.h"
 
 long long get_time(void)
@@ -12,45 +24,51 @@ long long get_time(void)
 
 static void	action_pf(long long time, int philo, char *str)
 {
-	printf("lldms %d %s\n", time / 1000, philo, str);
+	printf("%lld %d %s\n", time / 1000, philo, str);
 }
 
-void	philo_printf(t_philo *philo, t_info *info, int flag)
+long long	philo_printf(t_philo *philo, t_info *info, int flag)
 {
-	long long time_now;
+	long long	time_diff;
 
-	time_now = get_time();
 	pthread_mutex_lock(&(info->print));
-	if (info->simul == 1 && (info->full_num == -1 || philo->have_to_eat > 0)) // 실행 부분
+	time_diff = get_time() - info->start_time;
+	if (info->simul == 1)
 	{
 		if (flag == FORK)
-			action_pf(time_now - info->start_time, philo->philo_index, "has taken a fork");
+			action_pf(time_diff, philo->ph_index, "has taken a fork");
 		else if (flag == EAT)
-		{
-			action_pf(info->start_time - time_now, philo->philo_index, "is eating");
-			pthread_mutex_lock(&(philo->die));
-			philo->deadline = info->start_time - time_now + info->start_time * 1000;
-			philo->have_to_eat--;
-			pthread_mutex_unlock(&(philo->die));
-		}
+			action_pf(time_diff, philo->ph_index, "is eating");
 		else if (flag == SLEEP)
-			action_pf(info->start_time - time_now, philo->philo_index, "is sleeping");
+			action_pf(time_diff, philo->ph_index, "is sleeping");
 		else if (flag == THINK)
-			action_pf(info->start_time - time_now, philo->philo_index, "is thinking");
+			action_pf(time_diff, philo->ph_index, "is thinking");
 		else if (flag == DEAD)
-			action_pf(info->start_time - time_now, philo->philo_index, "died");
+		{
+			action_pf(time_diff, philo->ph_index, "died");
+			info->simul = 0;
+			time_diff = -1;
+		}
+		pthread_mutex_unlock(&(info->print));
+		return (time_diff + info->start_time);
 	}
 	pthread_mutex_unlock(&(info->print));
+	return (-1);
 }
 
-void	if_usleep(long long time)
+void	my_usleep(t_info *info, long long time)
 {
 	int	i;
+	long long	now;
+	long long	start;
 
 	i = 0;
-	while (i < time)
+	start = get_time();
+	while (1)
 	{
-		usleep(1000);
-		i++;
+		now = get_time();
+		if (now - start > time)
+			break;
+		usleep(10);
 	}
 }

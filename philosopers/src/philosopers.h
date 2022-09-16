@@ -39,7 +39,7 @@ typedef struct s_info
 	int	starve_time;
 	int	eating_time;
 	int	sleeping_time;
-	int	full_num;
+	int	total_must_eat;
 	int simul;
 	long long start_time;
 	pthread_mutex_t *fork;
@@ -50,10 +50,10 @@ typedef struct s_philo
 {
 	pthread_t thread;
 	t_info	*info;
-	int philo_index;
+	int ph_index;
 	int	left_fork;
 	int	right_fork;
-	int	have_to_eat;
+	int	must_eat;
 	long long deadline;
 	pthread_mutex_t die;
 }	t_philo;
@@ -74,8 +74,9 @@ int ft_error(int errno);
 void	show_info(t_info *info);
 
 int	sit_philo_table(t_philo *philo, t_info *info);
+void	my_usleep(t_info *info, long long time);
 
-long long get_time(void);
-void	philo_printf(t_philo *philo, t_info *info, int flag);
+long long	get_time(void);
+long long	philo_printf(t_philo *philo, t_info *info, int flag);
 
 #endif

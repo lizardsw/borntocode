@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/16 17:08:15 by seongwch          #+#    #+#             */
+/*   Updated: 2022/09/16 17:08:23 by seongwch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosopers.h"
 
 static int	check_argv_digit(char **argv)
@@ -46,7 +58,13 @@ int	init_philo(t_philo **philo, t_info *info)
 		(*philo)[i].info = info;
 		(*philo)[i].left_fork = i;
 		(*philo)[i].right_fork = (i + 1) % info->philo_num;
-		(*philo)[i].philo_index = i;
+		(*philo)[i].ph_index = i;
+		if (info->total_must_eat >= 0)
+			(*philo)[i].must_eat = info->total_must_eat / info->philo_num;
+		else
+			(*philo)[i].must_eat = -1;
+		if(pthread_mutex_init(&((*philo)[i].die), NULL))
+			return (MUTEX_INIT_ERROR);
 		i++;
 	}
 	return (NO_ERROR);
@@ -66,8 +84,8 @@ int	init_info(int argc, char **argv, t_info *info)
 	if(pthread_mutex_init(&(info->print), NULL))
 			return (MUTEX_INIT_ERROR);
 	if (argc > 5)
-		info->full_num = ft_atoi(argv[5]);
+		info->total_must_eat = ft_atoi(argv[5]) * info->philo_num;
 	else
-		info->full_num = -1;
+		info->total_must_eat = -1;
 	return (init_fork(info));
 }
