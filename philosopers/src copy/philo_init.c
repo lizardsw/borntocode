@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:08:15 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/20 20:44:56 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:08:23 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	init_fork(t_info *info)
 	info->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * info->philo_num);
 	if (info->fork == NULL)
 		return (NULL_ERROR);
-	//printf("%d\n", info->philo_num);
+	printf("%d\n", info->philo_num);
 	i = 0;
 	while (i < info->philo_num)
 	{

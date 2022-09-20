@@ -25,17 +25,15 @@ void	show_info(t_info *info)
 
 int		check_dead(t_philo *philo, t_info *info)
 {
-	long long	now;
+	long long	time_diff;
 
-	now = get_time() / 1000;
 	pthread_mutex_lock(&(philo->die));
-	printf("\"%lld\"", now);
-	if (philo->deadline - now > 0)
+	time_diff = get_time();
+	// printf("%lld %lld %lld\n", time_diff, philo->deadline, philo->deadline - time_diff);
+	if (time_diff > philo->deadline)
 	{
-		pthread_mutex_lock(&(info->print));
-		info->simul = 0;
-		printf("%lld %d %s\n", (now - info->start_time) / 1000, philo->ph_index + 1, "died");
-		pthread_mutex_unlock(&(info->print));
+		// printf("%xlld %lld %lld\n", time_diff, philo->deadline, philo->deadline - time_diff);
+		philo_printf(philo, info, DEAD);
 		pthread_mutex_unlock(&(philo->die));
 		return (FAIL);
 	}
@@ -56,15 +54,8 @@ void	monitor_philo(t_philo *philo, t_info *info)
 		{
 			flag = check_dead(&philo[i], info);
 			i++;
-			usleep(10);
+			my_usleep(info, 1000);
 		}
-		my_usleep(info, 100);
-	}
-	i = 0;
-	while (i < info->philo_num)
-	{
-		pthread_join(philo[i].thread, NULL);
-		i++;
 	}
 }
 
@@ -79,7 +70,7 @@ int main(int argc, char **argv)
 	errno = init_info(argc, argv, &info);
 	if (errno)
 		return (ft_error(errno));
-	//show_info(&info);
+	show_info(&info);
 	errno = init_philo(&philo, &info);
 	if (errno)
 		return (ft_error(errno));

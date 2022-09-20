@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:15:14 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/20 21:31:38 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:08:47 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,47 @@ long long get_time(void)
 	return (micro_time);
 }
 
-int philo_printf(t_info *info, int index, char *str)
+static void	action_pf(long long time, int philo, char *str)
 {
-	long long now_time;
-	int		flag;
+	printf("%lld %d %s\n", time / 1000, philo, str);
+}
 
-	flag = SUCCESS;
+long long	philo_printf(t_philo *philo, t_info *info, int flag)
+{
+	long long	time_diff;
+
+	time_diff = get_time() - info->start_time;
 	pthread_mutex_lock(&(info->print));
-	now_time = (get_time() - info->start_time) / 1000; 
 	if (info->simul == 1)
 	{
-		printf("%lld %d %s\n", now_time, index + 1, str);
+		if (flag == FORK)
+			action_pf(time_diff, philo->ph_index, "has taken a fork");
+		else if (flag == EAT)
+			action_pf(time_diff, philo->ph_index, "is eating");
+		else if (flag == SLEEP)
+			action_pf(time_diff, philo->ph_index, "is sleeping");
+		else if (flag == THINK)
+			action_pf(time_diff, philo->ph_index, "is thinking");
+		else if (flag == DEAD)
+		{
+			action_pf(time_diff, philo->ph_index, "died");
+			info->simul = 0;
+			time_diff = -1;
+		}
+		pthread_mutex_unlock(&(info->print));
+		return (time_diff + info->start_time);
 	}
-	else
-		flag = FAIL;
 	pthread_mutex_unlock(&(info->print));
-	return (flag);
+	return (-1);
 }
 
 void	my_usleep(t_info *info, long long time)
 {
+	int	i;
 	long long	now;
 	long long	start;
 
+	i = 0;
 	start = get_time();
 	while (1)
 	{

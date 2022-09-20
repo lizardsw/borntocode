@@ -77,6 +77,6 @@ int	sit_philo_table(t_philo *philo, t_info *info);
 void	my_usleep(t_info *info, long long time);
 
 long long	get_time(void);
-int	philo_printf(t_info *info, int index, char *str);
+long long	philo_printf(t_philo *philo, t_info *info, int flag);
 
 #endif
