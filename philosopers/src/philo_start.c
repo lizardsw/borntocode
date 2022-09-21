@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:11:13 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/20 22:42:15 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/20 23:55:21 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	philo_eating(t_philo *philo, t_info *info)
 	}
 	philo_printf(info, philo->ph_index, "is eating");
 	pthread_mutex_lock(&(philo->die));
-	philo->deadline = get_time() / 1000 + info->starve_time;
+	philo->deadline = get_time() + info->starve_time * 1000;
 	pthread_mutex_unlock(&(philo->die));
 	my_usleep(info, info->eating_time * 1000);
 	if (philo->ph_index % 2 == 0)
@@ -93,7 +93,7 @@ int	sit_philo_table(t_philo *philo, t_info *info)
 	while (i < info->philo_num)
 	{
 		pthread_mutex_lock(&(philo[i].die));
-		philo[i].deadline = info->start_time / 1000 + info->starve_time;
+		philo[i].deadline = info->start_time + info->starve_time * 1000;
 		pthread_mutex_unlock(&(philo[i].die));
 		i++;
 	}

@@ -27,10 +27,9 @@ int		check_dead(t_philo *philo, t_info *info)
 {
 	long long	now;
 
-	now = get_time() / 1000;
+	now = get_time();
 	pthread_mutex_lock(&(philo->die));
-	printf("\"%lld\"", now);
-	if (philo->deadline - now > 0)
+	if (now - philo->deadline > 0)
 	{
 		pthread_mutex_lock(&(info->print));
 		info->simul = 0;
@@ -56,7 +55,6 @@ void	monitor_philo(t_philo *philo, t_info *info)
 		{
 			flag = check_dead(&philo[i], info);
 			i++;
-			usleep(10);
 		}
 		my_usleep(info, 100);
 	}
