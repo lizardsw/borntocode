@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosopers.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 21:17:33 by seongwch          #+#    #+#             */
+/*   Updated: 2022/09/21 21:17:37 by seongwch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILOSOPERS_H
 # define PHILOSOPERS_H
 
@@ -59,7 +71,6 @@ typedef struct s_philo
 }	t_philo;
 
 // philo_libft.c
-int	ft_strlen(char	*str);
 int	is_digit(char	*str);
 int	ft_atoi(char *str);
 
@@ -67,16 +78,14 @@ int	ft_atoi(char *str);
 int	init_info(int argc, char **argv, t_info *info);
 int	init_philo(t_philo **philo, t_info *info);
 
-
 // error.c
 int ft_error(int errno);
 
-void	show_info(t_info *info);
-
-int	sit_philo_table(t_philo *philo, t_info *info);
+void	*philo_action(void *data);
+int		sit_philo_table(t_philo *philo, t_info *info);
 void	my_usleep(t_info *info, long long time);
 
 long long	get_time(void);
-int	philo_printf(t_info *info, int index, char *str);
+int			philo_printf(t_info *info, int index, char *str, int flag);
 
 #endif

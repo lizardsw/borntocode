@@ -64,7 +64,7 @@ int	is_digit(char	*str);
 int	ft_atoi(char *str);
 
 // philo_init.c
-int	init_info(int argc, char **argv, t_info *info);
+int	init_info(int argc, char **argv, t_info **info);
 int	init_philo(t_philo **philo, t_info *info);
 
 
@@ -77,6 +77,6 @@ int	sit_philo_table(t_philo *philo, t_info *info);
 void	my_usleep(t_info *info, long long time);
 
 long long	get_time(void);
-long long	philo_printf(t_philo *philo, t_info *info, int flag);
+int	philo_printf(t_info *info, int index, char *str);
 
 #endif

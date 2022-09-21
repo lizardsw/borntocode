@@ -11,11 +11,11 @@ void	show_info(t_info *info)
 	int	i;
 
 	i = 0;
-	printf("philo_num :%d\n", info->philo_num);
-	printf("starve_time :%d\n", info->starve_time);
-	printf("eating_time :%d\n", info->eating_time);
-	printf("sleeping_time :%d\n", info->sleeping_time);
-	printf("full_num :%d\n", info->total_must_eat);
+	printf("philo_num :%d\n", (*info).philo_num);
+	printf("starve_time :%d\n", (*info).starve_time);
+	printf("eating_time :%d\n", (*info).eating_time);
+	printf("sleeping_time :%d\n", (*info).sleeping_time);
+	printf("full_num :%d\n", (*info).total_must_eat);
 	// while (i < info->philo_num)
 	// {
 	// 	printf("philo : left -> %d right -> %d\n", info->philo[i].left_fork, info->philo[i].right_fork);
@@ -25,15 +25,16 @@ void	show_info(t_info *info)
 
 int		check_dead(t_philo *philo, t_info *info)
 {
-	long long	time_diff;
+	long long	now;
 
 	pthread_mutex_lock(&(philo->die));
-	time_diff = get_time();
-	// printf("%lld %lld %lld\n", time_diff, philo->deadline, philo->deadline - time_diff);
-	if (time_diff > philo->deadline)
+	now = get_time();
+	if (now - philo->deadline > 0)
 	{
-		// printf("%xlld %lld %lld\n", time_diff, philo->deadline, philo->deadline - time_diff);
-		philo_printf(philo, info, DEAD);
+		pthread_mutex_lock(&(info->print));
+		info->simul = 0;
+		printf("%lld %d %s\n", (now - info->start_time) / 1000, philo->ph_index + 1, "died");
+		pthread_mutex_unlock(&(info->print));
 		pthread_mutex_unlock(&(philo->die));
 		return (FAIL);
 	}
@@ -54,14 +55,21 @@ void	monitor_philo(t_philo *philo, t_info *info)
 		{
 			flag = check_dead(&philo[i], info);
 			i++;
-			my_usleep(info, 1000);
+			usleep(10);
 		}
+		my_usleep(info, 1000);
+	}
+	i = 0;
+	while (i < info->philo_num)
+	{
+		pthread_detach(philo[i].thread);
+		i++;
 	}
 }
 
 int main(int argc, char **argv)
 {
-	t_info	info;
+	t_info	*info;
 	t_philo *philo;
 	int		errno;
 
@@ -70,11 +78,12 @@ int main(int argc, char **argv)
 	errno = init_info(argc, argv, &info);
 	if (errno)
 		return (ft_error(errno));
-	show_info(&info);
-	errno = init_philo(&philo, &info);
+	show_info(info);
+	errno = init_philo(&philo, info);
 	if (errno)
 		return (ft_error(errno));
-	sit_philo_table(philo, &info);
-	monitor_philo(philo, &info);
+	show_info(info);
+	sit_philo_table(philo, info);
+	monitor_philo(philo, info);
 	return (0);
 }

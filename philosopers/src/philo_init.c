@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:08:15 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/20 20:44:56 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:42:41 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	init_fork(t_info *info)
 	info->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * info->philo_num);
 	if (info->fork == NULL)
 		return (NULL_ERROR);
-	//printf("%d\n", info->philo_num);
 	i = 0;
 	while (i < info->philo_num)
 	{
@@ -74,7 +73,7 @@ int	init_info(int argc, char **argv, t_info *info)
 {
 	int	errno;
 	
-	if (check_argv_digit(argv)) // 숫자 확인!
+	if (check_argv_digit(argv))
 		return (DIGIT_ERROR);
 	info->philo_num = ft_atoi(argv[1]);
 	info->starve_time = ft_atoi(argv[2]);
@@ -83,9 +82,11 @@ int	init_info(int argc, char **argv, t_info *info)
 	info->fork = NULL;
 	if(pthread_mutex_init(&(info->print), NULL))
 			return (MUTEX_INIT_ERROR);
-	if (argc > 5)
+	if (argc == 6)
 		info->total_must_eat = ft_atoi(argv[5]) * info->philo_num;
 	else
 		info->total_must_eat = -1;
+	if (info->philo_num == 0 || info->total_must_eat == 0)
+		return (DIGIT_ERROR);
 	return (init_fork(info));
 }

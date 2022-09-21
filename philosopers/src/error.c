@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 21:17:16 by seongwch          #+#    #+#             */
+/*   Updated: 2022/09/21 21:33:28 by seongwch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosopers.h"
 
 int ft_error(int errno)
@@ -7,7 +19,7 @@ int ft_error(int errno)
 	else if (errno == NULL_ERROR)
 		printf("malloc_error!\n");
 	else if (errno == DIGIT_ERROR)
-		printf("it is not digit!\n");
+		printf("input error!\n");
 	else if (errno == MUTEX_INIT_ERROR)
 		printf("mutex_init_error!\n");
 	else if (errno == THREAD_CREATE_ERROR)
