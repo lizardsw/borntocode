@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 19:58:51 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/21 22:31:58 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:29:48 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ static int	pick_fork(t_philo *philo, t_info *info)
 	if (philo->ph_index % 2 == 0)
 	{
 		pthread_mutex_lock(&(info->fork[philo->left_fork]));
-		if(philo_printf(info, philo->ph_index, "has taken a fork", 0) == FAIL)
+		if (philo_printf(info, philo->ph_index, "has taken a fork", 0) == FAIL)
 			return (FAIL);
 		pthread_mutex_lock(&(info->fork[philo->right_fork]));
-		if(philo_printf(info, philo->ph_index, "has taken a fork", 0) == FAIL)
+		if (philo_printf(info, philo->ph_index, "has taken a fork", 0) == FAIL)
 			return (FAIL);
 	}
 	else
 	{
 		pthread_mutex_lock(&(info->fork[philo->right_fork]));
-		if(philo_printf(info, philo->ph_index, "has taken a fork", 0) == FAIL)
+		if (philo_printf(info, philo->ph_index, "has taken a fork", 0) == FAIL)
 			return (FAIL);
 		pthread_mutex_lock(&(info->fork[philo->left_fork]));
-		if(philo_printf(info, philo->ph_index, "has taken a fork", 0) == FAIL)
+		if (philo_printf(info, philo->ph_index, "has taken a fork", 0) == FAIL)
 			return (FAIL);
 	}
 	return (SUCCESS);
@@ -51,8 +51,8 @@ static void	unpick_fork(t_philo *philo, t_info *info)
 
 static int	philo_eating(t_philo *philo, t_info *info)
 {
-	long long now;
-	
+	long long	now;
+
 	if (pick_fork(philo, info) == FAIL)
 		return (FAIL);
 	pthread_mutex_lock(&(philo->die));
@@ -68,7 +68,7 @@ static int	philo_eating(t_philo *philo, t_info *info)
 	pthread_mutex_unlock(&(philo->die));
 	if (philo_printf(info, philo->ph_index, "is eating", 1) == FAIL)
 		return (FAIL);
-	my_usleep(info, info->eating_time * 1000);
+	my_usleep(info->eating_time * 1000);
 	unpick_fork(philo, info);
 	return (SUCCESS);
 }
@@ -80,15 +80,17 @@ void	*philo_action(void *data)
 	philo = (t_philo *)data;
 	while (philo->must_eat > 0 || philo->must_eat == -1)
 	{
-		if(philo_eating(philo, philo->info) == FAIL)
-			break;
-		if (philo_printf(philo->info, philo->ph_index, "is sleeping", 0) == FAIL)
-			break;
-		my_usleep(philo->info, philo->info->sleeping_time * 1000);
-		if (philo_printf(philo->info, philo->ph_index, "is thinking", 0) == FAIL)
-			break;
+		if (philo_eating(philo, philo->info) == FAIL)
+			break ;
+		if (philo_printf(philo->info, philo->ph_index, \
+				"is sleeping", 0) == FAIL)
+			break ;
+		my_usleep(philo->info->sleeping_time * 1000);
+		if (philo_printf(philo->info, philo->ph_index, \
+				"is thinking", 0) == FAIL)
+			break ;
 		if (philo->info->philo_num % 2 == 1)
-			my_usleep(philo->info, 400);
+			my_usleep(400);
 	}
 	return (NULL);
 }

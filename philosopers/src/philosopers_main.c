@@ -6,13 +6,13 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:34:19 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/21 22:34:33 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:32:25 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopers.h"
 
-int		check_dead(t_philo *philo, t_info *info)
+int	check_dead(t_philo *philo, t_info *info)
 {
 	long long	now;
 
@@ -22,7 +22,8 @@ int		check_dead(t_philo *philo, t_info *info)
 	{
 		pthread_mutex_lock(&(info->print));
 		if (info->simul == 1)
-			printf("%lld %d %s\n", (now - info->start_time) / 1000, philo->ph_index + 1, "died");
+			printf("%lld %d %s\n", (now - info->start_time) / 1000, \
+						philo->ph_index + 1, "died");
 		info->simul = 0;
 		pthread_mutex_unlock(&(info->print));
 		pthread_mutex_unlock(&(philo->die));
@@ -35,7 +36,7 @@ int		check_dead(t_philo *philo, t_info *info)
 void	monitor_philo(t_philo *philo, t_info *info)
 {
 	int	i;
-	int flag;
+	int	flag;
 
 	flag = SUCCESS;
 	while (flag == SUCCESS)
@@ -52,7 +53,7 @@ void	monitor_philo(t_philo *philo, t_info *info)
 	if (info->philo_num == 1)
 	{
 		pthread_detach(philo[i].thread);
-		return;
+		return ;
 	}
 	while (i < info->philo_num)
 	{
@@ -61,10 +62,10 @@ void	monitor_philo(t_philo *philo, t_info *info)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_info	info;
-	t_philo *philo;
+	t_philo	*philo;
 	int		errno;
 
 	if (argc != 5 && argc != 6)

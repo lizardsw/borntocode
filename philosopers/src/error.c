@@ -6,13 +6,13 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:17:16 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/21 21:33:28 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:27:37 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopers.h"
 
-int ft_error(int errno)
+int	ft_error(int errno)
 {
 	if (errno == ARGC_ERROR)
 		printf("argc_error!\n");

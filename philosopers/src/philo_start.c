@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:11:13 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/21 21:42:31 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:25:20 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ int	sit_philo_table(t_philo *philo, t_info *info)
 		i += j;
 		while (i < info->philo_num)
 		{
-			if (pthread_create(&(philo[i].thread), NULL, philo_action, (void *)&philo[i]))
+			if (pthread_create(&(philo[i].thread), NULL, philo_action, \
+					(void *)&philo[i]))
 				return (THREAD_CREATE_ERROR);
 			usleep(10);
 			i += 2;
 		}
-		usleep(800);
+		my_usleep(800);
 		i = 0;
 		j++;
 	}

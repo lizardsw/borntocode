@@ -6,13 +6,13 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:15:14 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/21 22:51:36 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:32:00 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopers.h"
 
-long long get_time(void)
+long long	get_time(void)
 {
 	struct timeval	time;
 	long long		micro_time;
@@ -22,10 +22,10 @@ long long get_time(void)
 	return (micro_time);
 }
 
-int philo_printf(t_info *info, int index, char *str, int flag)
+int	philo_printf(t_info *info, int index, char *str, int flag)
 {
-	long long now_time;
- 
+	long long	now_time;
+
 	if (flag == 1 && info->total_must_eat != -1)
 		info->total_must_eat--;
 	pthread_mutex_lock(&(info->print));
@@ -41,11 +41,11 @@ int philo_printf(t_info *info, int index, char *str, int flag)
 	else
 	{
 		pthread_mutex_unlock(&(info->print));
-		return(FAIL);
+		return (FAIL);
 	}
 }
 
-void	my_usleep(t_info *info, long long time)
+void	my_usleep(long long time)
 {
 	long long	now;
 	long long	start;
@@ -55,7 +55,7 @@ void	my_usleep(t_info *info, long long time)
 	{
 		now = get_time();
 		if (now - start > time)
-			break;
+			break ;
 		usleep(150);
 	}
 }

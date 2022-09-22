@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:08:15 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/21 21:42:41 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:30:34 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ static int	check_argv_digit(char **argv)
 static int	init_fork(t_info *info)
 {
 	int	i;
-	int errno;
 
-	info->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * info->philo_num);
+	info->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
+				* info->philo_num);
 	if (info->fork == NULL)
 		return (NULL_ERROR);
 	i = 0;
 	while (i < info->philo_num)
 	{
-		if(pthread_mutex_init(&(info->fork[i]), NULL))
+		if (pthread_mutex_init(&(info->fork[i]), NULL))
 			return (MUTEX_INIT_ERROR);
 		i++;
 	}
@@ -62,7 +62,7 @@ int	init_philo(t_philo **philo, t_info *info)
 			(*philo)[i].must_eat = info->total_must_eat / info->philo_num;
 		else
 			(*philo)[i].must_eat = -1;
-		if(pthread_mutex_init(&((*philo)[i].die), NULL))
+		if (pthread_mutex_init(&((*philo)[i].die), NULL))
 			return (MUTEX_INIT_ERROR);
 		i++;
 	}
@@ -70,18 +70,19 @@ int	init_philo(t_philo **philo, t_info *info)
 }
 
 int	init_info(int argc, char **argv, t_info *info)
-{
-	int	errno;
-	
+{	
 	if (check_argv_digit(argv))
 		return (DIGIT_ERROR);
 	info->philo_num = ft_atoi(argv[1]);
 	info->starve_time = ft_atoi(argv[2]);
 	info->eating_time = ft_atoi(argv[3]);
 	info->sleeping_time = ft_atoi(argv[4]);
+	if (info->philo_num < 0 || info->starve_time < 0 || \
+			info->eating_time < 0 || info->sleeping_time < 0)
+		return (DIGIT_ERROR);
 	info->fork = NULL;
-	if(pthread_mutex_init(&(info->print), NULL))
-			return (MUTEX_INIT_ERROR);
+	if (pthread_mutex_init(&(info->print), NULL))
+		return (MUTEX_INIT_ERROR);
 	if (argc == 6)
 		info->total_must_eat = ft_atoi(argv[5]) * info->philo_num;
 	else
