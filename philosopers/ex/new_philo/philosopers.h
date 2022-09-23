@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:40:53 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/22 21:46:27 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/23 17:36:20 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct info
 	int			eat_tm;
 	int			starve_tm;
 	int			must_eat;
-	long long	start_time;
 }	t_info;
 
 typedef struct s_table
@@ -53,6 +52,7 @@ typedef struct s_table
 	t_info			info;
 	int				sh_simul;
 	int				sh_total_eat;
+	long long		sh_start_time;
 }	t_table;
 
 // 0 left_fork 1 right_fork
@@ -74,8 +74,12 @@ e_error	init_table(int argc, char **argv, t_table *table);
 e_error	init_philo(t_philo **philo, t_table *table, t_info info);
 
 int	ft_error(int errno);
-long long	get_time(void);
-void	my_usleep(long long time);
+long long	get_time(long long start_time);
+long long	start_time(void);
+void	my_usleep(long long time, long long start_time);
+void	*philo_action(void *data);
+e_error	sit_philo_table(t_philo *philo, t_table *table, t_info info);
+
 
 
 #endif

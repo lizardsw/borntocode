@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 19:58:51 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/22 20:22:01 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:35:52 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,12 @@ static int	philo_eating(t_philo *philo, t_info *info)
 		return (FAIL);
 	pthread_mutex_lock(&(philo->die));
 	now = get_time();
-	// if (now - philo->sh_deadline >= 0)
-	// {
-	// 	pthread_mutex_unlock(&(philo->die));
-	// 	return (FAIL);
-	// }
+	if (now - philo->sh_deadline >= 0)
+	{
+		pthread_mutex_unlock(&(philo->die));
+		return (FAIL);
+	}
+	printf("%lld %lld \n")
 	philo->sh_deadline = now + info->starve_time * 1000;
 	if (philo->must_eat > 0)
 		philo->must_eat--;

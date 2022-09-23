@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:34:19 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/22 20:57:08 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:38:22 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	check_dead(t_philo *philo, t_info *info)
 {
 	long long	now;
 
-	pthread_mutex_lock(&(philo->die));
 	now = (get_time());
 	if (now - philo->sh_deadline >= 0)
 	{
