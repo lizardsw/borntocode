@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:48:47 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/23 22:44:03 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/24 05:24:44 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,28 @@ static e_flag	check_dead(t_philo *philo, t_table *table)
 	int			i;
 	
 	i = 0;
+	usleep(10);
+	pthread_mutex_lock(&(table->print));
+	if (table->sh_total_eat == 0)
+	{
+		table->sh_simul = 0;
+		pthread_mutex_unlock(&(table->print));
+		return (FAIL);
+	}
 	while (i < table->info.philo_num)
 	{
-		pthread_mutex_lock(&(table->print));
 		now = get_time_from(table->sh_start_time);
 		if (now - philo[i].sh_dead_tm >= 0)
 		{
-			printf("%lld %lld %d %s\n", now, philo[i].sh_dead_tm, philo->index + 1, "died");
-			printf("%lld %d %s\n", now, philo->index + 1, "died");
+			if (table->sh_simul == 1)
+				printf("%lld %d %s\n", now, philo[i].index + 1, "died");
 			table->sh_simul = 0;
 			pthread_mutex_unlock(&(table->print));
 			return (FAIL);
 		}
-		pthread_mutex_unlock(&(table->print));
 		i++;
 	}
+	pthread_mutex_unlock(&(table->print));
 	return (SUCCESS);
 }
 

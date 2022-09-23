@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:15:14 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/23 22:28:51 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/24 03:47:55 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	my_usleep(long long time, struct timeval start_time)
 	while (1)
 	{
 		now = get_time_from(start_time);
-		if (now - start > time)
+		if (now - start >= time)
 			break ;
 		usleep(150);
 	}

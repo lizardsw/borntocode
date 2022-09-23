@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_start.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 21:42:49 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/23 22:32:18 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/24 05:02:00 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ e_error	sit_philo_table(t_philo *philo, t_table *table, t_info info)
 		i += j;
 		while (i < info.philo_num)
 		{
-			philo[i].sh_dead_tm = table->info.starve_tm;
+			philo[i].sh_dead_tm = (long long)table->info.starve_tm;
 			if (pthread_create(&(philo[i].thread), NULL, philo_action, \
 					(void *)&philo[i]))
 				return (THREAD_CREATE_ERROR);
-			usleep(10);
 			i += 2;
 		}
 		usleep(800);

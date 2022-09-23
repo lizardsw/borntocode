@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopers.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:40:53 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/23 19:21:57 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/24 04:34:21 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ e_error	init_philo(t_philo **philo, t_table *table, t_info info);
 int	ft_error(int errno);
 
 long long	get_time_from(struct timeval start_time);
-long long	start_time(void);
 void	my_usleep(long long time, struct timeval start_time);
 void	*philo_action(void *data);
 e_error	sit_philo_table(t_philo *philo, t_table *table, t_info info);

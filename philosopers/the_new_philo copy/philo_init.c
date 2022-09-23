@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:52:16 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/23 18:38:20 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/24 05:26:08 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ e_error	init_table(int argc, char **argv, t_table *table)
 	errno = init_info(&(table->info), argc, argv);
 	if (errno != NO_ERROR)
 		return (errno);
+	table->sh_total_eat = table->info.philo_num * table->info.must_eat;
 	if (pthread_mutex_init(&(table->print), NULL))
 		return (MUTEX_INIT_ERROR);
 	return (init_fork(table, table->info));
