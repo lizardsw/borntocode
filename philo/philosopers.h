@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:40:53 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/24 15:31:11 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:12:30 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,5 @@ void		my_usleep(long long time, struct timeval start_time);
 void		*philo_action(void *data);
 t_error		sit_philo_table(t_philo *philo, t_table *table, t_info info);
 void		table_free(t_table *table);
-void		philo_free(t_philo **philo, t_info info);
 
 #endif

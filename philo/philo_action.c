@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 21:48:47 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/24 13:40:44 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:00:15 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static t_flag	thinking(t_philo *philo, t_table *table, t_info info)
 	if (info.eat_tm > info.sleep_tm)
 		my_usleep((info.eat_tm - info.sleep_tm), table->sh_start_time);
 	if (info.philo_num % 2 == 1)
-		usleep(100);
+		usleep(400);
 	return (SUCCESS);
 }
 

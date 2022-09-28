@@ -6,23 +6,17 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:48:47 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/24 15:40:31 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:08:38 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopers.h"
-
-void	sss()
-{
-	system("leaks philo");
-}
 
 static t_flag	check_dead(t_philo *philo, t_table *table)
 {
 	long long	now;
 	int			i;
 
-	
 	i = 0;
 	if (table->sh_total_eat == 0)
 	{
@@ -77,8 +71,7 @@ int	main(int argc, char *argv[])
 	t_table	table;
 	t_philo	*philo;
 	t_error	errno;
-	
-	atexit(sss);
+
 	if (argc != 5 && argc != 6)
 		return (ft_error(ARGC_ERROR));
 	errno = init_table(argc, argv, &table);
@@ -89,7 +82,11 @@ int	main(int argc, char *argv[])
 		return (ft_error(errno));
 	errno = sit_philo_table(philo, &table, table.info);
 	if (errno)
-		return (ft_error(errno));
+	{
+		table.sh_simul = 0;
+		ft_error(errno);
+		pthread_mutex_unlock(&(table.print));
+	}
 	monitor_philo(philo, &table);
 	free(philo);
 	table_free(&table);

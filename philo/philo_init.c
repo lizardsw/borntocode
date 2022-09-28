@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:52:16 by seongwch          #+#    #+#             */
-/*   Updated: 2022/09/24 15:38:31 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:12:38 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ static t_error	init_fork(t_table *table, t_info info)
 	{
 		if (pthread_mutex_init(&(table->fork[i]), NULL))
 		{
+			i--;
+			while (i >= 0)
+			{
+				pthread_mutex_destroy(&(table->fork[i]));
+				i--;
+			}
+			pthread_mutex_destroy(&(table->print));
 			free(table->fork);
 			return (MUTEX_INIT_ERROR);
 		}
@@ -82,7 +89,10 @@ t_error	init_philo(t_philo **philo, t_table *table, t_info info)
 	i = 0;
 	(*philo) = (t_philo *)malloc(sizeof(t_philo) * info.philo_num);
 	if (philo == NULL)
+	{
+		table_free(table);
 		return (NULL_ERROR);
+	}
 	while (i < info.philo_num)
 	{
 		(*philo)[i].table = table;
