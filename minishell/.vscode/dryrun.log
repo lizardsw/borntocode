@@ -1,0 +1,40 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/seongwch/Desktop/seongwch-git/minishell'
+make -C ./shell_libft/ all
+ 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/builtin/ft_cd.o -c source/builtin/ft_cd.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/builtin/ft_echo.o -c source/builtin/ft_echo.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/builtin/ft_env.o -c source/builtin/ft_env.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/builtin/ft_exit.o -c source/builtin/ft_exit.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/builtin/ft_export_print.o -c source/builtin/ft_export_print.c 
+ 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/builtin/ft_export.o -c source/builtin/ft_export.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/builtin/ft_pwd.o -c source/builtin/ft_pwd.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/builtin/ft_unset.o -c source/builtin/ft_unset.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/parsing/expand_utils.o -c source/parsing/expand_utils.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/parsing/expand_utils2.o -c source/parsing/expand_utils2.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/parsing/expand.o -c source/parsing/expand.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/parsing/make_ast_utils.o -c source/parsing/make_ast_utils.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/parsing/make_ast.o -c source/parsing/make_ast.c 
+ 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/parsing/shell_split_utils.o -c source/parsing/shell_split_utils.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/parsing/shell_split.o -c source/parsing/shell_split.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/parsing/syntax_error.o -c source/parsing/syntax_error.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/pipe/execute_cmd.o -c source/pipe/execute_cmd.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/pipe/ft_here_doc.o -c source/pipe/ft_here_doc.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/pipe/multi_prc.o -c source/pipe/multi_prc.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/pipe/pipe_main.o -c source/pipe/pipe_main.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/pipe/pipe_utils.o -c source/pipe/pipe_utils.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/pipe/setting_fd.o -c source/pipe/setting_fd.c 
+ 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/pipe/single_prc.o -c source/pipe/single_prc.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/pipe/minishell_main.o -c source/pipe/minishell_main.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/utils/free.o -c source/utils/free.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/utils/ft_error.o -c source/utils/ft_error.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/utils/ft_no_exit_error.o -c source/utils/ft_no_exit_error.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/utils/list_env.o -c source/utils/list_env.c 
+cc -I ~/goinfre/.brew/opt/readline/include -I ./include -Wall -Wextra -Werror  -o source/utils/signal.o -c source/utils/signal.c 
+ 
+cc -Wall -Wextra -Werror  -lreadline -L ~/goinfre/.brew/opt/readline/lib -I ~/goinfre/.brew/opt/readline/include -I ./include -o minishell shell_libft/shell_libft.a source/builtin/ft_cd.o source/builtin/ft_echo.o source/builtin/ft_env.o source/builtin/ft_exit.o source/builtin/ft_export_print.o source/builtin/ft_export.o source/builtin/ft_pwd.o source/builtin/ft_unset.o source/parsing/expand_utils.o source/parsing/expand_utils2.o source/parsing/expand.o source/parsing/make_ast_utils.o source/parsing/make_ast.o source/parsing/shell_split_utils.o source/parsing/shell_split.o source/parsing/syntax_error.o source/pipe/execute_cmd.o source/pipe/ft_here_doc.o source/pipe/multi_prc.o source/pipe/pipe_main.o source/pipe/pipe_utils.o source/pipe/setting_fd.o source/pipe/single_prc.o source/pipe/minishell_main.o source/utils/free.o source/utils/ft_error.o source/utils/ft_no_exit_error.o source/utils/list_env.o source/utils/signal.o
+make: Leaving directory `/Users/seongwch/Desktop/seongwch-git/minishell'
+ 

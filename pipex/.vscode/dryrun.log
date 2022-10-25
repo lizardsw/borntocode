@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/seongwch/Desktop/seongwch-git/pipex'
+make -C ./prtf/ all
+gcc -Wall -Wextra -Werror -o src/main.o -c src/main.c
+gcc -Wall -Wextra -Werror -o src/parsing.o -c src/parsing.c
+gcc -Wall -Wextra -Werror -o src/pipe.o -c src/pipe.c
+gcc -Wall -Wextra -Werror -o pipex ./src/main.o ./src/parsing.o ./src/pipe.o ./prtf/libftprintf.a
+make: Leaving directory `/Users/seongwch/Desktop/seongwch-git/pipex'
+ 
