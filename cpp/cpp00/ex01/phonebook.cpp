@@ -86,10 +86,10 @@ void PhoneBook::search(void)
 		last = 8;
 	else
 		last = this->list_index;
-	std::cout << std::setfil <<  
+	std::cout << std::setfill('-') << std::setw(40) << "-" << std::endl;
 	for (int i; i < last; i++)
 	{
-		
+		this->phone_list[i]
 
 	}
 }
