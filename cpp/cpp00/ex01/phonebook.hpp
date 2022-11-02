@@ -1,33 +1,29 @@
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
+#include "contact.hpp"
 #include <iostream>
 #include <string>
+#include <cctype>
+#include <iomanip>
 
-class contact
+class PhoneBook
 {
     private :
-        std::string first_name;
-        std::string last_name;
-        std::string nick_name;
-        std::string phone_number;
-        std::string darkest_secret;
+        Contact phone_list[8];
+        std::string buffer[5];
+        int list_index;
+        bool is_full;
     public :
+        PhoneBook();
+        void    show_all(void);
+        void    add(void);
+        void    search(void);
+        ~PhoneBook();
+};
 
-}
-
-class phonbook
-{
-    private :
-
-    public :
-
-
-
-
-}
-
-
+std::string cmd_input(std::string prompt);
+bool    check_digit(std::string phone_number);
 
 
 
