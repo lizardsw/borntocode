@@ -34,5 +34,9 @@ int main()
     ref_value += 3;
     cout << value << " " << ref_value << endl;
 
+    
+    char hi[3] 
+    
+    
     return 0;
 }
