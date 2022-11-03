@@ -18,11 +18,10 @@ class Contact
         Contact();
         void set_info(int index, std::string buffer[]);
         void show_info(void);
+        void display_index(void);
         void diplay_first_name(void);
         void diplay_last_name(void);
         void diplay_nick_name(void);
-        void diplay_phone_number(void);
-        void diplay_darkest_secret(void);
         ~Contact();
 };
 

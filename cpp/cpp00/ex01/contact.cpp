@@ -20,12 +20,19 @@ void Contact::set_info(int index, std::string buffer[])
 
 void Contact::show_info(void)
 {
-	std::cout << this->index << " "\
-	<< this->first_name << " "\
-	<< this->last_name << " "\
-	<< this->nickname << " "\
-	<< this->phone_number<< " "\
-	<< this->darkest_secret << std::endl;
+	std::cout << "index :"<< this->index << std::endl\
+	<< "first_name :" << this->first_name << std::endl\
+	<< "last_name :" << this->last_name << std::endl\
+	<< "nick_name :" << this->nickname << std::endl\
+	<< "phone_number :" << this->phone_number<< std::endl\
+	<< "darkest_secret :" << this->darkest_secret << std::endl;
+}
+
+void Contact::display_index(void)
+{
+	std::cout << std::setw(10) << std::setfill(' ');
+	std::cout << this->index;
+	std::cout << "|";
 }
 
 void Contact::diplay_first_name(void)
@@ -43,16 +50,6 @@ void Contact::diplay_nick_name(void)
 	display_context(this->nickname);
 }
 
-void Contact::diplay_phone_number(void)
-{
-	display_context(this->phone_number);
-}
-
-void Contact::diplay_darkest_secret(void)
-{
-	display_context(this->darkest_secret);	
-}
-
 void display_context(std::string context)
 {
 	if (context.length() > 10)
@@ -60,5 +57,8 @@ void display_context(std::string context)
 		context.insert(9, ".");
 		context.erase(10, context.length());
 	}
+	std::cout << std::setw(10) << std::setfill(' ');
 	std::cout << context;
+	std::cout << "|";
+
 }
