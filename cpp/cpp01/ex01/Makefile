@@ -6,18 +6,18 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 19:10:28 by seongwch          #+#    #+#              #
-#    Updated: 2022/11/08 14:16:17 by seongwch         ###   ########.fr        #
+#    Updated: 2022/11/08 21:28:23 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = PhoneBook
+NAME = ZombieHorde
 CC = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror 
 make = make
 RM = rm -f
 SOURCE = main.cpp\
-			Contact.cpp\
-			PhoneBook.cpp
+			zombieHorde.cpp\
+			Zombie.cpp
 
 OBJECT = $(SOURCE:.cpp=.o)
 

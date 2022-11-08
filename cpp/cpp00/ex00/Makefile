@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seongwch <seongwch@student.42.kr>          +#+  +:+       +#+         #
+#    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 19:10:28 by seongwch          #+#    #+#              #
-#    Updated: 2022/10/25 19:58:28 by seongwch         ###   ########.fr        #
+#    Updated: 2022/11/08 14:16:24 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

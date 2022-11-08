@@ -1,4 +1,16 @@
-#include "phonebook.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/08 14:15:56 by seongwch          #+#    #+#             */
+/*   Updated: 2022/11/08 14:16:13 by seongwch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
 {
@@ -85,12 +97,11 @@ std::string cmd_input(std::string prompt)
 	int			i = 0;
 	int			j = 0;
 
-	while (flag == false)
+	std::cout << prompt << " :";
+	while (std::getline(std::cin, temp))
 	{
 		i = 0;
 		j = 0;
-		std::cout << prompt << " :";
-		std::getline(std::cin, temp);
 		while (temp[i] != '\0')
 		{
 			if (isspace(temp[i]) == false)
@@ -98,8 +109,14 @@ std::string cmd_input(std::string prompt)
 			i++;
 		}
 		if (j != 0)
+		{
 			flag = true;
+			break;
+		}
+		std::cout << prompt << " :";
 	}
+	if (flag == false)
+		exit(1);
 	return (temp);
 }
 

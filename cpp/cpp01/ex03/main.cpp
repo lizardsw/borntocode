@@ -5,28 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 14:15:52 by seongwch          #+#    #+#             */
-/*   Updated: 2022/11/08 14:16:18 by seongwch         ###   ########.fr       */
+/*   Created: 2022/11/08 16:40:05 by seongwch          #+#    #+#             */
+/*   Updated: 2022/11/08 21:34:37 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
 int main()
 {
-	PhoneBook mybook;
-	std::string book_ft;
+    Weapon club1 = Weapon("crude spiked club");
+    HumanA bob("Bob", club1);
+    bob.attack();
+    club1.setType("some other type of club");
+    bob.attack();
+    
+    Weapon club2 = Weapon("crude spiked club");
+    HumanB jim("Jim");
+    jim.attack();
+    jim.setWeapon(club2);
+    jim.attack();
+    club2.setType("some other type of club");
+    jim.attack();
 
-	std::cout << "[[[ADD, SEARCH, EXIT]]]" << std::endl;
-	while(std::getline(std::cin, book_ft))
-	{
-		if(book_ft.compare("EXIT") == 0)
-			mybook.book_exit();
-		else if (book_ft.compare("ADD") == 0)
-			mybook.add();
-		else if (book_ft.compare("SEARCH") == 0)
-			mybook.search();
-		std::cout << "[[[ADD, SEARCH, EXIT]]]" << std::endl;
-	}
-	return (0);
+    return 0;
 }
