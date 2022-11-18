@@ -6,20 +6,20 @@ int main(void)
 	std::string	key;
 	int value;
 
-	while (true)
-	{
+	// while (true)
+	// {
 		try
 		{
 			std::cin >> value;
-			if (value > 10)
+			if (value > 10 && value < 20)
 			{
 				throw(value);
 				std::cout << "throw!" << std::endl;
 			}
-			// else if (value > 20)
-			// {
-			// 	throw(std::string("hello"));
-			// }
+			else if (value > 20)
+			{
+				throw(std::string("hello"));
+			}
 			std::cout<< "not throw!" << std::endl;
 		}
 		catch(int value)
@@ -30,8 +30,12 @@ int main(void)
 		{
 			std::cout << "catchb!" << hello << std::endl;
 		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 		std::cout << "hello!" << std::endl;
 		
-	}
+	// }
 	return (0);
 }
