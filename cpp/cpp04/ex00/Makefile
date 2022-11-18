@@ -6,17 +6,21 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 19:10:28 by seongwch          #+#    #+#              #
-#    Updated: 2022/11/09 13:13:52 by seongwch         ###   ########.fr        #
+#    Updated: 2022/11/17 14:58:38 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harl
+NAME = animal
 CC = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror 
 make = make
 RM = rm -f
 SOURCE = main.cpp\
-			Harl.cpp
+			Animal.cpp\
+			Cat.cpp\
+			Dog.cpp\
+			WrongAnimal.cpp\
+			WrongCat.cpp
 
 OBJECT = $(SOURCE:.cpp=.o)
 

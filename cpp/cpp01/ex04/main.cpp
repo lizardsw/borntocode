@@ -6,7 +6,7 @@
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:58:27 by seongwch          #+#    #+#             */
-/*   Updated: 2022/11/08 19:45:23 by seongwch         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:09:32 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int main(int argc, char *argv[])
                     if (buffer.length() != 0)
                         outfile << buffer << std::endl;;
                 }
+                outfile.close();
             }
             else
                std::cout << "outfile_open_error!" << std::endl;     
+            infile.close();
         }
         else
             std::cout << "infile_open_error!" << std::endl;

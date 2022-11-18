@@ -6,17 +6,17 @@
 #    By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 19:10:28 by seongwch          #+#    #+#              #
-#    Updated: 2022/11/09 13:13:52 by seongwch         ###   ########.fr        #
+#    Updated: 2022/11/11 17:51:09 by seongwch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harl
+NAME = fixed
 CC = c++
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror 
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -pedantic
 make = make
 RM = rm -f
 SOURCE = main.cpp\
-			Harl.cpp
+			Fixed.cpp
 
 OBJECT = $(SOURCE:.cpp=.o)
 

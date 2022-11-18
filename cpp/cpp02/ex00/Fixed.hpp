@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongwch <seongwch@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 16:40:14 by seongwch          #+#    #+#             */
-/*   Updated: 2022/11/18 15:23:54 by seongwch         ###   ########.fr       */
+/*   Created: 2022/11/11 17:34:25 by seongwch          #+#    #+#             */
+/*   Updated: 2022/11/11 17:51:40 by seongwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
-#include "Weapon.hpp"
+#include <iostream>
 
-class HumanA
+class Fixed
 {
     private:
-        std::string name;
-        Weapon &weapon;
+        int                 number;
+        const static int    bits = 8;
     public:
-        HumanA(std::string name, Weapon &weapon);
-        ~HumanA();
-        void attack();
+        Fixed();
+        Fixed(const Fixed& copy);
+        Fixed &operator=(const Fixed& copy);
+        ~Fixed();
+        int getRawBits(void) const;
+        void setRawBits(int const raw);
 };
-
 
 #endif
