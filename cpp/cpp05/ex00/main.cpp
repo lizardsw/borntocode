@@ -4,7 +4,7 @@ int main()
 {
 	try
 	{
-		// Bureaucrat first("first", 0);
+		Bureaucrat first("first", 0);
 		// Bureaucrat second("second", 151);
 
 		Bureaucrat A("seongwch", 149);

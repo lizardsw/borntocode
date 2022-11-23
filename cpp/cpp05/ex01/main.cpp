@@ -10,7 +10,7 @@ int main()
 		std::cout << C << std::endl;
 		C = D;
 		std::cout << D << std::endl;
-		// Form K("K", 0, 0);
+		// Form K("K", 0, 0); // Form constructor exception
 		// Form K("K", 160, 160);
 
 		Bureaucrat AA("seongwch", 10);

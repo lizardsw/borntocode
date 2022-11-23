@@ -83,7 +83,7 @@ std::ostream& operator<<(std::ostream &out, const Bureaucrat &arg)
 }
 
 // extra
-void	Bureaucrat::signForm(Form &arg)
+void	Bureaucrat::signForm(Form &arg) const
 {
 	try
 	{
@@ -97,7 +97,7 @@ void	Bureaucrat::signForm(Form &arg)
 	}
 }
 
-void	Bureaucrat::executeForm(const Form &form)
+void	Bureaucrat::executeForm(const Form &form) const
 {
 	try
 	{

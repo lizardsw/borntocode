@@ -29,10 +29,14 @@ Intern::~Intern()
 Form *Intern::makeForm(std::string type, std::string name)
 {
 	std::string form_type[3] = {"shrubberycreation request","robotomy request", "presidentialpardon request"};
+	std::string form_name[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
 	for (int i = 0; i < 3; i++)
 	{
 		if (type == form_type[i])
+		{
+			std::cout << "👶Intern creates " << form_name[i] << std::endl;
 			return ((this->*ft_ptr[i])(name));
+		}
 	}
 	throw(Intern::NoTypeException());
 }
@@ -57,5 +61,5 @@ Form *Intern::make_pr(std::string name)
 
 const char *Intern::NoTypeException::what() const throw()
 {
-	return ("🚫No type exception🚫");
+	return ("🚫No type Form exception🚫");
 }

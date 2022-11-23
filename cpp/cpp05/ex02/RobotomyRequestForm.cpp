@@ -2,14 +2,17 @@
 
 RobotomyRequestForm::RobotomyRequestForm()
 {
+	std::srand((unsigned int)std::time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string name):Form(name, 72, 45)
-{	
+{
+	std::srand((unsigned int)std::time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy):Form(copy)
 {
+	std::srand((unsigned int)std::time(NULL));
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &copy)
@@ -26,8 +29,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::make_robot() const
 {
-	int temp = rand() % 2;
-	
+	int temp = std::rand()%2;
 	std::cout << "dril........................!" << std::endl;
 	if (temp == 0)
 	{

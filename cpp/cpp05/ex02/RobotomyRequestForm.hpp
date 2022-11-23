@@ -5,6 +5,7 @@
 #include <string>
 #include <exception>
 #include <cstdlib>
+#include <ctime>
 #include "Form.hpp"
 
 class RobotomyRequestForm : public Form
