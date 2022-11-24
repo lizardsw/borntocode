@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
-
+#include <limits.h>
+#include <cmath>
 
 class Parent
 {
@@ -29,10 +30,13 @@ public:
 
 int main()
 {
+    std::string hi = "9999999999999999999999999999999999999999999999999999999999999999999";
     char *num;
-    float temp = std::strtod("a", &num);
-    std::cout << temp << num << std::endl;
-
+    float temp = std::strtod(hi.data(), &num);
+    double ttemp = std::strtod(hi.data(), &num);
+    
+    std::cout << temp << std::endl;
+    std::cout << ttemp << std::endl;
 
     int ok = std::atol("-9999999999999999999999");
     long yes = std::strtol("9999999999999999999", NULL, 10);
