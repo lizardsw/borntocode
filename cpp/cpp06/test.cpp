@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 
 class Parent
@@ -28,20 +29,14 @@ public:
 
 int main()
 {
-    Parent* ptr_p_instance = new Child();
-    Child* ptr_c_instance;
+    char *num;
+    float temp = std::strtod("a", &num);
+    std::cout << temp << num << std::endl;
 
 
-    ptr_p_instance->say();
-
-    // dynamic_cast를 사용한 down casting 
-    ptr_c_instance = dynamic_cast<Child*>(ptr_p_instance);
-
-    if (ptr_p_instance == nullptr) {
-        std::cout << "error compile" << std::endl;
-    }
-    ptr_c_instance->say();
-
-
+    int ok = std::atol("-9999999999999999999999");
+    long yes = std::strtol("9999999999999999999", NULL, 10);
+    std::cout << ok << std::endl;
+    std::cout << yes << std::endl;
     return 0;
 }

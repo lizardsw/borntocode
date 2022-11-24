@@ -6,12 +6,29 @@
 #include <cstdlib>
 #include <cctype>
 
-void display_input(char input);
-void display_input(int input);
-void display_input(float input);
-void display_input(double input);
+class Convert
+{
+	private:
+		const char *input;
+		std::string s_input;
+		bool error[4];
+		char char_value;
+		int int_value;
+		float float_value;
+		char *float_str;
+		double double_value;
+	public:
+		Convert();
+		Convert(const char *input);
+		Convert(const Convert &copy);
+		Convert &operator::=(const Convert &copy);
+		~Convert();
+		void convert_char();
+		void convert_int();
+		void convert_float();
+		void convert_double();
+}
 
-std::ostream &operator<<(std::ostream &out, char temp);
 
 
 #endif
