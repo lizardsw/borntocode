@@ -61,7 +61,7 @@ void Convert::convert_char()
 		}
 		else // int
 		{
-			long temp = std::strtol();
+			double temp = std::strtod(this->input, NULL);
 			if (temp > 127 || temp < 0)
 				this->error[0] = true;
 			else

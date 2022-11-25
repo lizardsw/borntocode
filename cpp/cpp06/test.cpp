@@ -30,17 +30,19 @@ public:
 
 int main()
 {
-    std::string hi = "9999999999999999999999999999999999999999999999999999999999999999999";
+    std::string hi = "+inf";
     char *num;
     float temp = std::strtod(hi.data(), &num);
     double ttemp = std::strtod(hi.data(), &num);
     
-    std::cout << temp << std::endl;
+    std::cout << num << std::endl;
     std::cout << ttemp << std::endl;
 
     int ok = std::atol("-9999999999999999999999");
     long yes = std::strtol("9999999999999999999", NULL, 10);
     std::cout << ok << std::endl;
     std::cout << yes << std::endl;
+
+    
     return 0;
 }
