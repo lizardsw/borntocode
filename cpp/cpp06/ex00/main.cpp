@@ -1,13 +1,15 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <cctype>
 
 bool is_nan(std::string input)
 {
-	if(!(input.find("nan") == std::string::npos))
-		return (true);
-	else if (!(input.find("NaN") == std::string::npos))
+	int length = input.length();
+	for (int i = 0; i < length; i++)
+	{
+		input[i] = static_cast<unsigned char>(std::toupper(input[i]));
+	}
+	if(!(input.find("NAN") == std::string::npos))
 		return (true);
 	return (false);
 }
@@ -83,7 +85,7 @@ int main(int argc, char *argv[])
 	std::string str_input = std::string(argv[1]);
 	double double_input;
 	char *float_str = NULL;
-	if (str_input.length() == 1 && !std::isdigit(argv[1][0]))
+	if (str_input.length() == 1 && !(std::isdigit(argv[1][0])))
 		double_input = static_cast<char>(argv[1][0]);
 	else
 		double_input = std::strtod(argv[1], &float_str);
