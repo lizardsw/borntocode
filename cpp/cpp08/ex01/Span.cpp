@@ -12,6 +12,7 @@ Span::Span(const Span &copy)
 Span &Span::operator=(const Span &copy)
 {
 	this->vec = copy.vec;
+	this->N = copy.N;
 	return (*this);
 }
 
@@ -22,20 +23,37 @@ Span::~Span()
 Span::Span(unsigned int N)
 {
 	this->vec.reserve(N);
+	this->N = N;
 }
 
 void Span::addNumber(int number)
 {
 	if (this->vec.capacity() == this->vec.size())
 	{
-		throw(std::runtime_error("full vector!"));
+		throw(std::runtime_error("full container!"));
 	}
 	this->vec.push_back(number);
 }
 
-unsigned int Span::shortestSpan()
+void Span::addRandNumber(int number)
 {
-	if (vec.size() < 2)
+	static int seed;
+	int temp;
+	if (seed == 0)
+	{
+		seed = 1;
+		std::srand((unsigned int)std::time(NULL));
+	}
+	for (int i = 0; i < number; i++)
+	{
+		temp = std::rand() % 10000;
+		this->addNumber(temp);
+	}
+}
+
+unsigned int Span::shortestSpan(void) const
+{
+	if (this->vec.size() < 2)
 	{
 		throw(std::runtime_error("size small!!"));
 	}
@@ -45,8 +63,7 @@ unsigned int Span::shortestSpan()
 	std::vector<int>::iterator iter;
 	for (iter = temp.begin() + 1; iter != temp.end(); iter++)
 	{
-	
-		if (static_cast<int>(shortspan) > *iter - *(iter - 1))
+		if (shortspan > static_cast<unsigned int>(*iter - *(iter - 1)))
 		{
 			shortspan =  static_cast<unsigned int>(*iter - *(iter - 1));
 		}
@@ -54,14 +71,14 @@ unsigned int Span::shortestSpan()
 	return (shortspan);
 }
 
-unsigned int Span:longestSpan()
+unsigned int Span::longestSpan(void) const
 {
-	if (vec.size() < 2)
+	if (this->vec.size() < 2)
 	{
 		throw(std::runtime_error("size small!"));
 	}
 	unsigned int longspan;
-	longspan = *std::max_element(this->vec.begin() - this->vec.end()) - \
-					*std::min_element(this->vec.begin() - this->vec.end());
+	longspan = *std::max_element(this->vec.begin() , this->vec.end()) - \
+					*std::min_element(this->vec.begin() , this->vec.end());
 	return (longspan);
 }

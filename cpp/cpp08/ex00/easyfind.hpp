@@ -11,7 +11,7 @@ typename T::iterator easyfind(T container,int value)
 	iter = std::find(container.begin(), container.end(), value);
 	if (iter == container.end())
 	{
-		throw(std::runtime_error("this value is not in this conatiner......"));
+		throw(std::runtime_error("this value is not in this container......"));
 	}
 	return (iter);
 }
